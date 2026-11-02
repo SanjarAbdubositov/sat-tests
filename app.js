@@ -32,6 +32,7 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
     userName: "Sanjar Abdubositov",
     mocksData: {},       // { "4": [120 items], ..., "11": [120 items] }
     scoringTables: {},   // { "4": { Reading: {...}, Math: {...} }, ... }
+    figuresManifest: {}, // { "4": { "13": { stemFigure, optFigures, optsFigure }, ... } }
     currentFilter: "all",
 
     // Active Exam State
@@ -80,6 +81,9 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
     if (window.SAT_SCORING_DATA) {
       state.scoringTables = Object.assign({}, window.SAT_SCORING_DATA);
     }
+    if (window.SAT_FIGURES_MANIFEST) {
+      state.figuresManifest = Object.assign({}, window.SAT_FIGURES_MANIFEST);
+    }
 
     // 2. Attempt dynamic fetch() from ./data/mock{N}.json or ./mock{N}.json when served over HTTP/HTTPS
     if (window.location.protocol.startsWith("http")) {
@@ -88,9 +92,14 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
         if (scoreResp.ok) {
           state.scoringTables = await scoreResp.json();
         }
-      } catch (_) {
-        // Fallback already loaded from window.SAT_SCORING_DATA
-      }
+      } catch (_) {}
+
+      try {
+        const figResp = await fetch("data/figures_manifest.json");
+        if (figResp.ok) {
+          state.figuresManifest = await figResp.json();
+        }
+      } catch (_) {}
 
       await Promise.all(
         TEST_NUMBERS.map(async (num) => {
@@ -99,9 +108,7 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
             if (resp.ok) {
               state.mocksData[String(num)] = await resp.json();
             }
-          } catch (_) {
-            // Keep pre-bundled data for mock{num}
-          }
+          } catch (_) {}
         })
       );
     }
@@ -110,8 +117,21 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
     const totalQuestions = Object.values(state.mocksData).reduce((acc, arr) => acc + (Array.isArray(arr) ? arr.length : 0), 0);
     const pillText = document.getElementById("ingestion-status-text");
     if (pillText) {
-      pillText.textContent = `${loadedTestsCount} Practice Tests Synced (${totalQuestions} Items)`;
+      pillText.textContent = `${loadedTestsCount} Practice Tests Synced (${totalQuestions} Items • 1:1 Visual Diagrams Active)`;
     }
+  }
+
+  function getQuestionFigureData(testNum, qId) {
+    const testMap = state.figuresManifest[String(testNum)];
+    return (testMap && testMap[String(qId)]) || null;
+  }
+
+  function openFigureLightbox(imgSrc) {
+    const lb = document.createElement("div");
+    lb.className = "bb-lightbox";
+    lb.innerHTML = `<img src="${escapeHtml(imgSrc)}" alt="1:1 Zoomed Diagram / Figure" />`;
+    lb.addEventListener("click", () => lb.remove());
+    document.body.appendChild(lb);
   }
 
   // ==========================================================================
@@ -324,7 +344,7 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
         </div>
         <div class="mock-card-actions">
           <button type="button" class="btn-launch-exam" data-launch-test="${testNum}">
-            ${answeredCount > 0 ? "Resume Bluebook Exam" : "Start Bluebook Exam"}
+            ${answeredCount > 0 ? "Resume Test" : "Start Test"}
           </button>
           ${
             latestScore
@@ -378,13 +398,13 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
       <tr>
         <td>${formatShortTime(rec.timestamp)}</td>
         <td><strong>Practice Test #${rec.testNumber}</strong></td>
-        <td><strong style="color:#002d62;font-family:var(--font-mono);font-size:14px;">${rec.compositeScore}</strong> <span style="color:#64748b;font-size:11px;">(${rec.compositeLower}–${rec.compositeUpper})</span></td>
-        <td>${rec.rwScore} <span style="color:#64748b;font-size:11px;">(${rec.rwRaw}/66)</span></td>
-        <td>${rec.mathScore} <span style="color:#64748b;font-size:11px;">(${rec.mathRaw}/54)</span></td>
+        <td><strong style="color:#ff6b00;font-family:var(--font-mono);font-size:14px;">${Number(rec.compositeScore).toLocaleString("en-US")}</strong> <span style="color:#78736a;font-size:11px;">(${rec.compositeLower}–${rec.compositeUpper})</span></td>
+        <td>${rec.rwScore} <span style="color:#78736a;font-size:11px;">(${rec.rwRaw}/66)</span></td>
+        <td>${rec.mathScore} <span style="color:#78736a;font-size:11px;">(${rec.mathRaw}/54)</span></td>
         <td>
-          <span style="color:#15803d;font-weight:700;">${rec.correctCount}C</span> /
-          <span style="color:#b91c1c;font-weight:700;">${rec.incorrectCount}I</span> /
-          <span style="color:#64748b;font-weight:700;">${rec.blankCount}B</span>
+          <span style="color:#2d6a4f;font-weight:700;">${rec.correctCount}C</span> /
+          <span style="color:#c94a38;font-weight:700;">${rec.incorrectCount}I</span> /
+          <span style="color:#78736a;font-weight:700;">${rec.blankCount}B</span>
         </td>
         <td>
           <button type="button" class="btn-secondary-sm" data-open-history-id="${rec.recordId}" style="padding:4px 10px;font-size:11.5px;">Review</button>
@@ -540,9 +560,10 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
     renderHighlightablePassage(qObj, prog);
 
     // 2. Render Right Column Header & Prompt
+    const unansweredInMod = modQuestions.filter((q) => typeof prog.answers[q.id] !== "number").length;
     document.getElementById("bb-q-number-box").textContent = `${qNumInMod}`;
     document.getElementById("bb-q-progress-text").textContent = `Question ${qNumInMod} of ${totalInMod}`;
-    document.getElementById("bb-pill-trigger-text").textContent = `Question ${qNumInMod} of ${totalInMod}`;
+    document.getElementById("bb-pill-trigger-text").textContent = `${qNumInMod} of ${totalInMod} · ${unansweredInMod} left`;
     document.getElementById("bb-question-prompt").textContent = qObj.question;
 
     // Flag for Review state
@@ -552,16 +573,18 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
     flagBtn.classList.toggle("flagged", isFlagged);
     flagLbl.textContent = isFlagged ? "Marked for Review" : "Mark for Review";
 
-    // 3. Render 4 Multiple-Choice Alternatives (A, B, C, D) + Strikethrough Controls
+    // 3. Render 4 Multiple-Choice Alternatives (A, B, C, D) + 1:1 Visual Options + Strikethrough Controls
     const optionsContainer = document.getElementById("bb-options-container");
     optionsContainer.innerHTML = "";
     const letters = ["A", "B", "C", "D"];
     const selectedAns = prog.answers[qObj.id];
     const struckIndices = prog.strikes[qObj.id] || [];
+    const figData = getQuestionFigureData(state.activeTestNum, qObj.id);
 
     qObj.options.forEach((optText, idx) => {
       const isSelected = selectedAns === idx;
       const isStruck = struckIndices.includes(idx);
+      const optImgPath = figData && Array.isArray(figData.optFigures) ? figData.optFigures[idx] : null;
 
       const row = document.createElement("div");
       row.className = `bb-option-row${isStruck ? " eliminated" : ""}`;
@@ -570,18 +593,26 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
       card.className = `bb-option-card${isSelected ? " selected" : ""}`;
       card.setAttribute("role", "radio");
       card.setAttribute("aria-checked", isSelected ? "true" : "false");
-      card.innerHTML = `
-        <span class="bb-option-letter">${letters[idx]}</span>
-        <span class="bb-option-text">${escapeHtml(optText)}</span>
-      `;
+
+      if (optImgPath) {
+        card.innerHTML = `
+          <span class="bb-option-letter">${letters[idx]}</span>
+          <div class="bb-option-visual-wrap">
+            <img class="bb-option-img" src="${escapeHtml(optImgPath)}" alt="Choice ${letters[idx]}" />
+          </div>
+        `;
+      } else {
+        card.innerHTML = `
+          <span class="bb-option-letter">${letters[idx]}</span>
+          <span class="bb-option-text">${qObj.type === "Math" ? formatMathHtml(optText) : escapeHtml(optText)}</span>
+        `;
+      }
 
       card.addEventListener("click", () => {
         if (prog.strikes[qObj.id] && prog.strikes[qObj.id].includes(idx)) {
-          // Un-strike if user clicks directly on a struck option
           prog.strikes[qObj.id] = prog.strikes[qObj.id].filter((i) => i !== idx);
         }
         if (prog.answers[qObj.id] === idx) {
-          // Allow deselecting on second click if desired
           delete prog.answers[qObj.id];
         } else {
           prog.answers[qObj.id] = idx;
@@ -618,15 +649,48 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
     renderNavigatorBoxes(modQuestions, prog);
   }
 
-  // Custom Line Highlighter Tool
+  // Custom Line Highlighter Tool + 1:1 Official Diagram / Chart / Table / Math Card Renderer
   function renderHighlightablePassage(qObj, prog) {
     const container = document.getElementById("bb-passage-container");
     container.innerHTML = "";
 
+    const figData = getQuestionFigureData(state.activeTestNum, qObj.id);
+    if (figData && (figData.stemFigure || figData.optsFigure)) {
+      const figCard = document.createElement("div");
+      figCard.className = "bb-figure-card";
+
+      const badge = document.createElement("span");
+      badge.className = "bb-figure-badge";
+      badge.textContent =
+        qObj.type === "Math"
+          ? "1:1 Official Math Diagram, Equations & Setup (Click to Zoom)"
+          : "1:1 Official Chart / Table / Passage Visual (Click to Zoom)";
+      figCard.appendChild(badge);
+
+      if (figData.stemFigure) {
+        const img = document.createElement("img");
+        img.className = "bb-figure-img";
+        img.src = figData.stemFigure;
+        img.alt = `Question ${qObj.id} Official Diagram`;
+        img.addEventListener("click", () => openFigureLightbox(figData.stemFigure));
+        figCard.appendChild(img);
+      }
+
+      if (figData.optsFigure) {
+        const optsImg = document.createElement("img");
+        optsImg.className = "bb-opts-figure-img";
+        optsImg.src = figData.optsFigure;
+        optsImg.alt = `Question ${qObj.id} Official Graphical Options`;
+        optsImg.addEventListener("click", () => openFigureLightbox(figData.optsFigure));
+        figCard.appendChild(optsImg);
+      }
+
+      container.appendChild(figCard);
+    }
+
     const qHighlights = prog.highlights[qObj.id] || {};
     const rawPassage = qObj.passage || "";
 
-    // Split passage into paragraphs and interactive highlightable sentences/lines
     const paragraphs = rawPassage.split(/\n\s*\n|\n/);
     let lineCounter = 0;
 
@@ -637,7 +701,6 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
       const pEl = document.createElement("p");
       pEl.className = "bb-passage-paragraph";
 
-      // Split into sentence/clause segments so each line/sentence can be clicked to highlight
       const segments = trimmed.match(/[^.!?]+[.!?]*\s*/g) || [trimmed];
       segments.forEach((seg) => {
         const currentLineIdx = lineCounter++;
@@ -966,25 +1029,44 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
     const rec = state.activeReviewRecord;
     if (!rec) return;
 
-    document.getElementById("rev-exam-title").textContent = `SAT Practice Test #${rec.testNumber} — Diagnostic Score Analysis`;
-    document.getElementById("rev-completion-timestamp").textContent = `Candidate: ${rec.candidate} • ${formatShortTime(rec.timestamp)}`;
+    document.getElementById("rev-exam-title").textContent = `SAT Practice Test #${rec.testNumber}`;
+    document.getElementById("rev-completion-timestamp").textContent = `Test mode • ${formatShortTime(rec.timestamp)} • ${rec.candidate}`;
 
-    document.getElementById("rev-total-score").textContent = `${rec.compositeScore}`;
+    document.getElementById("rev-total-score").textContent = `${Number(rec.compositeScore).toLocaleString("en-US")}`;
     document.getElementById("rev-total-range").textContent = `Official Score Range: ${rec.compositeLower}–${rec.compositeUpper}`;
 
     document.getElementById("rev-rw-score").textContent = `${rec.rwScore}`;
-    document.getElementById("rev-rw-raw-detail").textContent = `Raw Score: ${rec.rwRaw} / 66 (Mod 1: ${rec.rwMod1Correct}/33, Mod 2: ${rec.rwMod2Correct}/33)`;
+    document.getElementById("rev-rw-raw-detail").textContent = `${rec.rwRaw} of 66 (Mod 1: ${rec.rwMod1Correct}/33, Mod 2: ${rec.rwMod2Correct}/33)`;
     document.getElementById("rev-rw-range").textContent = `Official Section Range: ${rec.rwLower}–${rec.rwUpper}`;
 
     document.getElementById("rev-math-score").textContent = `${rec.mathScore}`;
-    document.getElementById("rev-math-raw-detail").textContent = `Raw Score: ${rec.mathRaw} / 54 (Mod 1: ${rec.mathMod1Correct}/27, Mod 2: ${rec.mathMod2Correct}/27)`;
+    document.getElementById("rev-math-raw-detail").textContent = `${rec.mathRaw} of 54 (Mod 1: ${rec.mathMod1Correct}/27, Mod 2: ${rec.mathMod2Correct}/27)`;
     document.getElementById("rev-math-range").textContent = `Official Section Range: ${rec.mathLower}–${rec.mathUpper}`;
+
+    const rwBar = document.getElementById("rev-rw-bar");
+    if (rwBar) rwBar.style.width = `${Math.round((rec.rwRaw / 66) * 100)}%`;
+
+    const mathBar = document.getElementById("rev-math-bar");
+    if (mathBar) mathBar.style.width = `${Math.round((rec.mathRaw / 54) * 100)}%`;
+
+    const masteryPctEl = document.getElementById("rev-mastery-pct");
+    if (masteryPctEl) masteryPctEl.textContent = `${rec.accuracyPct}%`;
+
+    const masteryCircle = document.getElementById("rev-mastery-ring-circle");
+    if (masteryCircle) {
+      const circumference = 314.16;
+      const offset = circumference * (1 - Math.max(0, Math.min(100, rec.accuracyPct)) / 100);
+      masteryCircle.style.strokeDashoffset = `${offset.toFixed(2)}`;
+    }
+
+    const masterySub = document.getElementById("rev-mastery-sub");
+    if (masterySub) masterySub.textContent = `${rec.correctCount} of ${rec.totalQuestions} correct`;
 
     document.getElementById("rev-correct-count").textContent = `${rec.correctCount}`;
     document.getElementById("rev-incorrect-count").textContent = `${rec.incorrectCount}`;
     document.getElementById("rev-blank-count").textContent = `${rec.blankCount}`;
     document.getElementById("rev-accuracy-bar").style.width = `${rec.accuracyPct}%`;
-    document.getElementById("rev-accuracy-text").textContent = `Overall Accuracy: ${rec.accuracyPct}% (${rec.correctCount} of ${rec.totalQuestions} items)`;
+    document.getElementById("rev-accuracy-text").textContent = `${rec.correctCount} of ${rec.totalQuestions} correct`;
 
     renderReviewQuestionMatrix();
     renderReviewSelectedExplanation();
@@ -1064,42 +1146,105 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
     outcomePill.className = `rev-outcome-pill ${outcome}`;
     outcomePill.textContent = outcomeLabel;
 
-    document.getElementById("rev-detail-passage").textContent = qObj.passage;
+    const passageBox = document.getElementById("rev-detail-passage");
+    passageBox.innerHTML = "";
+    const figData = getQuestionFigureData(rec.testNumber, qObj.id);
+    if (figData && (figData.stemFigure || figData.optsFigure)) {
+      const figCard = document.createElement("div");
+      figCard.className = "bb-figure-card";
+      if (figData.stemFigure) {
+        const img = document.createElement("img");
+        img.className = "bb-figure-img";
+        img.src = figData.stemFigure;
+        img.alt = `Item #${qObj.id} Official Diagram`;
+        img.addEventListener("click", () => openFigureLightbox(figData.stemFigure));
+        figCard.appendChild(img);
+      }
+      if (figData.optsFigure) {
+        const optsImg = document.createElement("img");
+        optsImg.className = "bb-opts-figure-img";
+        optsImg.src = figData.optsFigure;
+        optsImg.alt = `Item #${qObj.id} Official Options Visual`;
+        optsImg.addEventListener("click", () => openFigureLightbox(figData.optsFigure));
+        figCard.appendChild(optsImg);
+      }
+      passageBox.appendChild(figCard);
+    }
+    const passageTextDiv = document.createElement("div");
+    passageTextDiv.textContent = qObj.passage;
+    passageBox.appendChild(passageTextDiv);
+
     document.getElementById("rev-detail-question").textContent = qObj.question;
 
     const userAnsBox = document.getElementById("rev-user-ans-box");
     userAnsBox.className = `ans-comp-box user-ans-box ${outcome}`;
-    document.getElementById("rev-detail-user-ans").textContent =
-      typeof uAns === "number" ? `${letters[uAns]} (${qObj.options[uAns]})` : "Omitted / Blank";
-    document.getElementById("rev-detail-correct-ans").textContent = `${letters[qObj.correctAnswer]} (${qObj.options[qObj.correctAnswer]})`;
+    const uOptImg = typeof uAns === "number" && figData && Array.isArray(figData.optFigures) ? figData.optFigures[uAns] : null;
+    const cOptImg = figData && Array.isArray(figData.optFigures) ? figData.optFigures[qObj.correctAnswer] : null;
 
-    // Render all 4 options with visual verification badges
+    document.getElementById("rev-detail-user-ans").innerHTML =
+      typeof uAns === "number"
+        ? uOptImg
+          ? `${letters[uAns]} <img class="ans-comp-img" src="${escapeHtml(uOptImg)}" alt="Choice ${letters[uAns]}" />`
+          : `${letters[uAns]} (${qObj.type === "Math" ? formatMathHtml(qObj.options[uAns]) : escapeHtml(qObj.options[uAns])})`
+        : "Omitted / Blank";
+
+    document.getElementById("rev-detail-correct-ans").innerHTML = cOptImg
+      ? `${letters[qObj.correctAnswer]} <img class="ans-comp-img" src="${escapeHtml(cOptImg)}" alt="Choice ${letters[qObj.correctAnswer]}" />`
+      : `${letters[qObj.correctAnswer]} (${qObj.type === "Math" ? formatMathHtml(qObj.options[qObj.correctAnswer]) : escapeHtml(qObj.options[qObj.correctAnswer])})`;
+
+    // Render all 4 options with visual verification badges & 1:1 visual options
     const optsContainer = document.getElementById("rev-detail-options");
     optsContainer.innerHTML = "";
     qObj.options.forEach((optText, i) => {
       const isCorrect = i === qObj.correctAnswer;
       const isUserWrong = uAns === i && !isCorrect;
+      const optImgPath = figData && Array.isArray(figData.optFigures) ? figData.optFigures[i] : null;
       const div = document.createElement("div");
       div.className = `rev-opt-item${isCorrect ? " is-correct" : ""}${isUserWrong ? " is-user-wrong" : ""}`;
       div.innerHTML = `
         <span class="rev-opt-badge">${letters[i]})</span>
-        <span style="flex:1;">${escapeHtml(optText)}</span>
+        <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+          ${
+            optImgPath
+              ? `<img class="bb-option-img" src="${escapeHtml(optImgPath)}" alt="Choice ${letters[i]}" />`
+              : `<span>${qObj.type === "Math" ? formatMathHtml(optText) : escapeHtml(optText)}</span>`
+          }
+        </div>
         ${isCorrect ? `<span style="color:#15803d;font-weight:800;font-size:12px;">✓ Correct Answer</span>` : ""}
         ${isUserWrong ? `<span style="color:#b91c1c;font-weight:800;font-size:12px;">✗ Your Choice</span>` : ""}
       `;
       optsContainer.appendChild(div);
     });
 
-    // Format official explanation with clean paragraph splits per choice
+    // Format official explanation with 1:1 visual Math explanation card + clean paragraph splits
     const expContainer = document.getElementById("rev-detail-explanation");
+    expContainer.innerHTML = "";
+
+    if (figData && figData.expFigure) {
+      const expFigCard = document.createElement("div");
+      expFigCard.className = "rev-exp-figure-card";
+      expFigCard.innerHTML = `
+        <span class="bb-figure-badge">1:1 Official College Board Typeset Math Explanation (Click to Zoom)</span>
+      `;
+      const expImg = document.createElement("img");
+      expImg.className = "rev-exp-figure-img";
+      expImg.src = figData.expFigure;
+      expImg.alt = `Item #${qObj.id} Official Explanation`;
+      expImg.addEventListener("click", () => openFigureLightbox(figData.expFigure));
+      expFigCard.appendChild(expImg);
+      expContainer.appendChild(expFigCard);
+    }
+
     const formattedExp = (qObj.explanation || "Explanation unavailable.")
       .replace(/\s+(?=Choice\s+[A-D]\s+is\s+)/g, "\n\n")
       .replace(/\s+(?=Alternate\s+approach:)/gi, "\n\n");
 
-    expContainer.innerHTML = formattedExp
+    const textExpDiv = document.createElement("div");
+    textExpDiv.innerHTML = formattedExp
       .split("\n\n")
-      .map((para) => `<p>${escapeHtml(para.trim())}</p>`)
+      .map((para) => `<p>${qObj.type === "Math" ? formatMathHtml(para.trim()) : escapeHtml(para.trim())}</p>`)
       .join("");
+    expContainer.appendChild(textExpDiv);
   }
 
   // ==========================================================================
@@ -1404,6 +1549,15 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
+  }
+
+  function formatMathHtml(str) {
+    const escaped = escapeHtml(str);
+    // Render mathematical fractions like 15/17, -4/3, 361/8 with a real horizontal division bar (taqsim)
+    return escaped.replace(
+      /(^|[\s\(;,\-−])(\d+[a-zA-Z]*)\s*\/\s*(\d+[a-zA-Z]*)(?=$|[\s\);,\.])/g,
+      '$1<span class="math-frac"><span class="math-frac-num">$2</span><span class="math-frac-den">$3</span></span>'
+    );
   }
 
   // Boot Platform on DOMContentLoaded

@@ -164,7 +164,7 @@
     "testNumber": 8,
     "module": 1,
     "type": "Reading",
-    "passage": "Video Game Availability by Initial Release Years\nInitial release years Percentage of games still available\n1975–1979 0.89\n1980–1984 3.65\n1985–1989 15.38\n1990–1994 19.33\n1995–1999 14.22\nIn a recent study, researchers found that relatively\nfew video games released over the decades remain\navailable today. For example, only 14.22 percent of\ngames are still available that were initially released\nin _______",
+    "passage": "In a recent study, researchers found that relatively\nfew video games released over the decades remain\navailable today. For example, only 14.22 percent of\ngames are still available that were initially released\nin _______",
     "question": "Which choice most effectively uses data from the table to complete the statement?",
     "options": [
       "2000–2004.",
@@ -180,7 +180,7 @@
     "testNumber": 8,
     "module": 1,
     "type": "Reading",
-    "passage": "Depths at Which Four Deep-Sea Fish Species Live\nDepth below the\nSpecies ocean surface\nFootballfish 200–1,000 meters\nSouthern stoplight loosejaw 500–2,000 meters\nBlack seadevil 250–2,000 meters\nBollons’ rattail 300–800 meters\nSome oceanic fish species live very deep underwater.\nResearchers collected data about the depths at which\nvarious species live.",
+    "passage": "Some oceanic fish species live very deep underwater.\nResearchers collected data about the depths at which\nvarious species live.",
     "question": "Based on the information in the table, at what depth does the southern stoplight loosejaw live?",
     "options": [
       "More than 2,000 meters below the surface",
@@ -196,7 +196,7 @@
     "testNumber": 8,
     "module": 1,
     "type": "Reading",
-    "passage": "Housing Starts in the US, January–April 2022\n(in thousands)\nMonth Housing starts\nJanuary 1,669\nFebruary 1,771\nMarch 1,713\nApril 1,803\nWhen construction of a single-family house begins, it\nis called a housing start. In the first four months of\n2022, the highest number of housing starts in the\nUnited States was in _____",
+    "passage": "When construction of a single-family house begins, it\nis called a housing start. In the first four months of\n2022, the highest number of housing starts in the\nUnited States was in _____",
     "question": "Which choice most effectively uses data from the table to complete the statement?",
     "options": [
       "April.",
@@ -500,13 +500,13 @@
     "testNumber": 8,
     "module": 1,
     "type": "Reading",
-    "passage": "While researching a topic, a student has taken the\nfollowing notes:\n• The factors that affect clutch size (the number of\neggs laid at one time) have been well studied in\nbirds but not in lizards.\n• A team led by Shai Meiri of Tel Aviv University\ninvestigated which factors influence lizard clutch\nsize.\n• Meiri’s team obtained clutch-size and habitat data\nfor over 3,900 lizard species and analyzed the data\nwith statistical models.\n• Larger clutch size was associated with\nenvironments in higher latitudes that have more\nseasonal change.\n• Lizards in higher-latitude environments may lay",
-    "question": "larger clutches to take advantage of shorter windows of favorable conditions.",
+    "passage": "research study. Which choice most effectively uses\nWhile researching a topic, a student has taken the\nrelevant information from the notes to accomplish\nfollowing notes:",
+    "question": "this goal? • The factors that affect clutch size (the number of",
     "options": [
-      "Choice A: The sentence emphasizes the aim of the research study by highlighting what the researchers conducting the study wanted to know—specifically, which factors influence clutch size among lizards.",
-      "Choice B: because the sentence emphasizes what researchers determined at the end of the study, not what the study’s aim was.",
-      "Choice C: because the sentence emphasizes a finding from the research study, not the aim of the study.",
-      "Choice D: because the sentence emphasizes the research study’s methodology, not its aim."
+      "Researchers wanted to know which factors eggs laid at one time) have been well studied in influence lizard egg clutch size because such birds but not in lizards. factors have been well studied in birds but not in • A team led by Shai Meiri of Tel Aviv University lizards. investigated which factors influence lizard clutch",
+      "After they obtained data for over 3,900 lizard size. species, researchers determined that larger clutch • Meiri’s team obtained clutch-size and habitat data size was associated with environments in higher for over 3,900 lizard species and analyzed the data latitudes that have more seasonal change. with statistical models.",
+      "We now know that lizards in higher-latitude environments may lay larger clutches to take • Larger clutch size was associated with advantage of shorter windows of favorable environments in higher latitudes that have more conditions. seasonal change.",
+      "Researchers obtained clutch-size and habitat • Lizards in higher-latitude environments may lay data for over 3,900 lizard species and analyzed larger clutches to take advantage of shorter the data with statistical models. windows of favorable conditions."
     ],
     "correctAnswer": 0,
     "explanation": "Choice A is the best answer. The sentence emphasizes the aim of the research study by highlighting what the researchers conducting the study wanted to know—specifically, which factors influence clutch size among lizards. Choice B is incorrect because the sentence emphasizes what researchers determined at the end of the study, not what the study’s aim was. Choice C is incorrect because the sentence emphasizes a finding from the research study, not the aim of the study. Choice D is incorrect because the sentence emphasizes the research study’s methodology, not its aim."
@@ -516,8 +516,8 @@
     "testNumber": 8,
     "module": 1,
     "type": "Reading",
-    "passage": "While researching a topic, a student has taken the\nfollowing notes:\n• British musicians John Lennon and\nPaul McCartney shared writing credit for\nnumerous Beatles songs.\n• Many Lennon-McCartney songs were actually\nwritten by either Lennon or McCartney, not by\nboth.\n• The exact authorship of specific parts of many\nBeatles songs, such as the verse for “In My Life,” is\ndisputed.\n• Mark Glickman, Jason Brown, and Ryan Song\nused statistical methods to analyze the musical\ncontent of Beatles songs.\n• They concluded that there is 18.9% probability\nthat McCartney wrote the verse for “In My Life,”\nstating that the verse is “consistent with Lennon’s\nsongwriting style.”",
-    "question": "STO Do not turn to any othe",
+    "passage": "While researching a topic, a student has taken the\nfollowing notes:\n• British musicians John Lennon and\nPaul McCartney shared writing credit for\nnumerous Beatles songs.\n• Many Lennon-McCartney songs were actually\nwritten by either Lennon or McCartney, not by\nboth.\n• The exact authorship of specific parts of many\nBeatles songs, such as the verse for “In My Life,” is\ndisputed.\n• Mark Glickman, Jason Brown, and Ryan Song\nused statistical methods to analyze the musical\ncontent of Beatles songs.\n• They concluded that there is 18.9% probability\nthat McCartney wrote the verse for “In My Life,”",
+    "question": "stating that the verse is “consistent with Lennon’s songwriting style.”",
     "options": [
       "Choice A: because the sentence summarizes the methodology and findings of a particular analysis of a single song; it doesn’t make a generalization about the kind of study conducted.",
       "Choice B: because the sentence mentions the data and conclusion of a particular analysis of a single song; it doesn’t make a generalization about the kind of study conducted.",
@@ -756,13 +756,13 @@
     "testNumber": 8,
     "module": 2,
     "type": "Reading",
-    "passage": "Estimates of Tyrannosaurid Bite Force\nA\nStudy Year Estimation method\nCost et al. 2019 muscular and skeletal modeling\nGignac and Erickson 2017 tooth-bone interaction analysis\nMeers 2002 body-mass scaling\nBates and Falkingham 2012 muscular and skeletal modeling\nThe largest tyrannosaurids—the family of carnivorous dinos\nthat includes Tarbosaurus, Albertosaurus, and, most famousl\nTyrannosaurus rex—are thought to have had the strongest bi\nland animals in Earth’s history. Determining the bite force o\nanimals can be difficult, however, and paleontologists Paul B\nEmily Rayfield have suggested that an estimate of dinosaur b\nmay be significantly influenced by the methodology used in g\nthat estimate.",
-    "question": "Which choice best describes data from the table that support and Rayfield’s suggestion?",
+    "passage": "The largest tyrannosaurids—the family of carnivorous dinosaurs\nthat includes Tarbosaurus, Albertosaurus, and, most famously,\nTyrannosaurus rex—are thought to have had the strongest bites of any\nland animals in Earth’s history. Determining the bite force of extinct\nanimals can be difficult, however, and paleontologists Paul Barrett and\nEmily Rayfield have suggested that an estimate of dinosaur bite force\nmay be significantly influenced by the methodology used in generating\nthat estimate.",
+    "question": "Which choice best describes data from the table that support Barrett and Rayfield’s suggestion?",
     "options": [
-      "The study by Meers used body-mass scaling and produc lowest estimated maximum bite force, while the study by used muscular and skeletal modeling and produced the h estimated maximum.",
-      "In their study, Gignac and Erickson used tooth-bone int analysis to produce an estimated bite force range with a of 8,000 newtons and a maximum of 34,000 newtons.",
-      "The bite force estimates produced by Bates and Falkingh Cost et al. were similar to each other, while the estimates by Meers and by Gignac and Erickson each differed subs from any other estimate.",
-      "The estimated maximum bite force produced by Cost et exceeded the estimated maximum produced by Bates an Falkingham, even though both groups of researchers use same method to generate their estimates."
+      "The study by Meers used body-mass scaling and produced the lowest estimated maximum bite force, while the study by Cost et al. used muscular and skeletal modeling and produced the highest estimated maximum.",
+      "In their study, Gignac and Erickson used tooth-bone interaction analysis to produce an estimated bite force range with a minimum of 8,000 newtons and a maximum of 34,000 newtons.",
+      "The bite force estimates produced by Bates and Falkingham and by Cost et al. were similar to each other, while the estimates produced by Meers and by Gignac and Erickson each differed substantially from any other estimate.",
+      "The estimated maximum bite force produced by Cost et al. exceeded the estimated maximum produced by Bates and Falkingham, even though both groups of researchers used the same method to generate their estimates."
     ],
     "correctAnswer": 2,
     "explanation": "Choice C is the best answer because it accurately describes data from the table that support Barrett and Rayfield’s suggestion about bite force estimates. According to the text, Barrett and Rayfield believe that estimates of dinosaur bite force may be strongly influenced by the methods used to produce them—that is, that different methods may produce significantly different results. The table shows that the studies by Bates and Falkingham and by Cost et al. used the same estimation method (muscular and skeletal modeling) and produced similar bite force estimates (approximately 35,000–57,000 newtons and 35,000–63,000 newtons, respectively). The study by Meers, however, used body-mass scaling and produced a much higher bite force estimate (183,000–235,000 newtons), while the study by Gignac and Erickson used tooth-bone interaction analysis and produced a much lower bite force estimate (8,000–34,000 newtons). The fact that one method produced similar estimates in two different studies and that two different methods used in other studies produced substantially different estimates supports the idea that dinosaur bite force estimates are significantly influenced by the methodology used to produce them. Choice A is incorrect because it inaccurately describes data from the table. The table does show that the studies by Meers and by Cost et al. used different estimation methods and produced very different ranges of estimated dinosaur bite force, which would support Barrett and Rayfield’s suggestion that different methodologies may produce significantly different estimates. However, the table doesn’t show that the study by Meers produced the lowest estimated maximum bite force while the study by Cost et al. produced the highest. In fact, the study by Meers estimated a maximum bite force of approximately 235,000 newtons, which is the highest of all the estimated maximums. Choice B is incorrect. Although the data from Gignac and Ericson’s study are accurately described, a single set of findings from one study using only one methodology can’t show that different methodologies may produce significantly different dinosaur bite force estimates, as Barrett and Rayfield suggest. Choice D is incorrect. Although the table shows that the maximum bite force estimated by Cost et al. was higher than that estimated by Bates and Falkingham, the difference is relatively small; in fact, both teams estimated a minimum bite force of approximately 35,000 newtons and a maximum bite force close to approximately 60,000 newtons. Because these findings demonstrate that a single methodology (muscular and skeletal modeling) produced similar overall results in two studies, the findings don’t support Barrett and Rayfield’s suggestion that different methodologies may produce significantly different dinosaur bite force estimates."
@@ -1034,7 +1034,7 @@
       "To remove carvings from sandstone arches in Utah’s Arches National Park, power grinding is not always feasible.",
       "Filling in carvings with ground sandstone and a bonding agent is less invasive than smoothing them away with a power grinder, which can greatly alter or damage the sandstone arches.",
       "Park rangers can use a power grinding technique to smooth away carvings or fill them in with ground sandstone and a bonding agent.",
-      "As methods for removing carvings from sandstone, power grinding and infilling differ in their level of invasiveness. STO Do not turn to any othe"
+      "As methods for removing carvings from sandstone, power grinding and infilling differ in their level of invasiveness."
     ],
     "correctAnswer": 1,
     "explanation": "Choice B is the best answer. The sentence effectively explains an advantage of infilling: it’s less invasive than using a power grinder. Choice A is incorrect. The sentence identifies a disadvantage of power grinding; it doesn’t explain an advantage of infilling. Choice C is incorrect. The sentence identifies the two techniques park rangers use; it doesn’t explain an advantage of infilling. Choice D is incorrect. The sentence indicates that power grinding and infilling are different in one aspect; it fails to explain an advantage of infilling."
@@ -1466,7 +1466,7 @@
       "I only",
       "II only",
       "I and II",
-      "Neither I nor II STO Do not turn to any othe"
+      "Neither I nor II"
     ],
     "correctAnswer": 1,
     "explanation": "Choice B is correct. For the function f , since the base of the exponent, .12 5, is greater than 1, the value of .12 5 x^h increases as x increases. Therefore, the value of .18 12 5 x^h and the value of .18 12 54 1x +^h also increase as x increases. Since f is therefore an increasing function where x 0$ , the function f has no maximum value. For the function g, since the base of the exponent, .07 3, is less than 1, the value of .07 3 x^h decreases as x increases. Therefore, the value of .90 73 x^h also decreases as x increases. It follows that the maximum value of gx^h for x 0$ occurs when x 0= . Substituting 0 for x in the function g yields .g 09 07 3 0=^^ hh , which is equivalent to g 09 1=^^ hh , or g 09=^h . Therefore, the maximum value of gx^h for x 0$ is 9, which appears as a coefficient in equation II. So, of the two equations given, only II displays, as a constant or coefficient, the maximum value of the function it defines, where x 0$ . Choice A is incorrect and may result from conceptual or calculation errors. Choice C is incorrect and may result from conceptual or calculation errors. Choice D is incorrect and may result from conceptual or calculation errors."
@@ -1898,7 +1898,7 @@
       "−c",
       "−c2−392",
       "− 392−c2",
-      "− c2+392 STO Do not turn to any othe ✓ ✓,----"
+      "− c2+392 ✓ ✓,----"
     ],
     "correctAnswer": 3,
     "explanation": "Choice D is correct. If xc 022 #- , then neither side of the given equation is defined and there can be no solution. Therefore, xc 0>22- . Subtracting 2 2 2 xc c - from both sides of the given equation yields 39 2 2 2 2 2 2 xc xc cx -= -- , or 39 2 2 2 2 xc xc = - - . Squaring both sides of this equation yields 39 2 2 2 2 2 2 xc xc = - -eo , or 39 2 2 22 22 2 xc xc xc = - --^^ hh . Since xc22- is positive and, therefore, nonzero, the expression 22 2 2 xc xc - - is defined and equivalent to 1. It follows that the equation 39 2 2 22 22 2 xc xc xc = - --^^ hh can be rewritten as xc 39 2 2 2 2 22 2 xc xc -= - -e `o j , or xc13 922 2-=^ ^h h , which is equivalent to xc 3922 2-= . Adding c2 to both sides of this equation yields xc 3922 2=+ . T aking the square root of both sides of this equation yields two solutions: xc 3922=+ and xc 3922=- + . Therefore, of the given choices, c 3922-+ is one of the solutions to the given equation. Choice A is incorrect and may result from conceptual or calculation errors. Choice B is incorrect and may result from conceptual or calculation errors. Choice C is incorrect and may result from conceptual or calculation errors."

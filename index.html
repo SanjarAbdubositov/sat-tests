@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bluebook™ Digital SAT Mock Platform — College Board 1:1 Client Cloner</title>
+  <title>Sat Mocs-Tests</title>
   <!-- Google Fonts for authentic Bluebook UI & serif reading passages -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <!-- Official Desmos Graphing Calculator API Script (Required 1:1 Specification) -->
   <script src="https://www.desmos.com/api/v1.12/calculator.js?apiKey=17316a9092414f63a2c22387daa23098"></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
   <!-- ====================================================================
@@ -23,13 +27,13 @@
         <div class="db-brand">
           <div class="db-logo-mark" aria-hidden="true">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-              <rect x="2" y="3" width="20" height="18" rx="3" fill="#002d62" stroke="#60a5fa" stroke-width="1.6"/>
-              <path d="M7 8h10M7 12h10M7 16h6" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+              <rect x="2" y="3" width="20" height="18" rx="5" fill="#ff6b00" />
+              <path d="M7 8h10M7 12h10M7 16h6" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
             </svg>
           </div>
           <div>
-            <div class="db-brand-badge">COLLEGE BOARD DIGITAL SAT SUITE</div>
-            <h1 class="db-brand-title">Bluebook™ Client Cloner</h1>
+            <div class="db-brand-badge">SAT / ACT PREP • FULL PRACTICE TESTS</div>
+            <h1 class="db-brand-title">Collegize SAT Prep</h1>
           </div>
         </div>
 
@@ -46,7 +50,8 @@
             </div>
             <button class="btn-icon-subtle" id="edit-profile-btn" title="Switch or Edit Candidate Name">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                <path d="M12 20h9" />
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
               </svg>
             </button>
           </div>
@@ -85,7 +90,8 @@
           <div>
             <h2 class="db-section-title">Full-Length Digital SAT Practice Tests (Tests 4 – 11)</h2>
             <p class="db-section-desc">
-              Automatically ingested from local PDF test books, official answer keys, and raw-to-scale scoring tables. Select any test to launch the 1:1 Bluebook simulation environment.
+              Automatically ingested from local PDF test books, official answer keys, and raw-to-scale scoring tables.
+              Select any test to launch the 1:1 Bluebook simulation environment.
             </p>
           </div>
           <div class="db-filter-group">
@@ -107,7 +113,8 @@
             <div class="admin-eyebrow">LOCALSTORAGE PERSISTENT TELEMETRY</div>
             <h2 class="db-section-title">Administration Panel & Historical Score Logs</h2>
             <p class="db-section-desc">
-              Real-time audit log tracking candidate session entrances, module transitions, completion metrics, and scaled score histories.
+              Real-time audit log tracking candidate session entrances, module transitions, completion metrics, and
+              scaled score histories.
             </p>
           </div>
           <div class="admin-actions">
@@ -197,7 +204,8 @@
         <div class="bb-timer-display" id="bb-timer-value" aria-live="off">32:00</div>
         <div class="bb-timer-hidden-icon hidden" id="bb-timer-hidden-indicator" title="Timer Hidden">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
           </svg>
         </div>
         <button class="bb-timer-toggle-btn" id="bb-timer-toggle-btn" type="button">Hide</button>
@@ -205,33 +213,45 @@
 
       <!-- Right: Calculator Trigger, Highlighter Tool, Reference Sheet & Exit -->
       <div class="bb-topbar-right">
-        <button class="bb-tool-btn" id="bb-highlighter-toggle-btn" type="button" title="Toggle Passage Line Highlighter">
+        <button class="bb-tool-btn" id="bb-highlighter-toggle-btn" type="button"
+          title="Toggle Passage Line Highlighter">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            <path d="M12 20h9" />
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
           </svg>
           <span>Highlights &amp; Notes</span>
         </button>
 
-        <button class="bb-tool-btn" id="bb-calculator-btn" type="button" title="Open Official Desmos Graphing Calculator">
+        <button class="bb-tool-btn" id="bb-calculator-btn" type="button"
+          title="Open Official Desmos Graphing Calculator">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/>
-            <line x1="8" y1="10" x2="8" y2="10.01"/><line x1="12" y1="10" x2="12" y2="10.01"/><line x1="16" y1="10" x2="16" y2="10.01"/>
-            <line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="16" y1="14" x2="16" y2="14.01"/>
-            <line x1="8" y1="18" x2="16" y2="18"/>
+            <rect x="4" y="2" width="16" height="20" rx="2" />
+            <line x1="8" y1="6" x2="16" y2="6" />
+            <line x1="8" y1="10" x2="8" y2="10.01" />
+            <line x1="12" y1="10" x2="12" y2="10.01" />
+            <line x1="16" y1="10" x2="16" y2="10.01" />
+            <line x1="8" y1="14" x2="8" y2="14.01" />
+            <line x1="12" y1="14" x2="12" y2="14.01" />
+            <line x1="16" y1="14" x2="16" y2="14.01" />
+            <line x1="8" y1="18" x2="16" y2="18" />
           </svg>
           <span>Calculator</span>
         </button>
 
         <button class="bb-tool-btn" id="bb-reference-btn" type="button" title="Open Math Reference Sheet">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
           </svg>
           <span>Reference</span>
         </button>
 
-        <button class="bb-tool-btn bb-exit-btn" id="bb-save-exit-btn" type="button" title="Save Progress and Return to Dashboard">
+        <button class="bb-tool-btn bb-exit-btn" id="bb-save-exit-btn" type="button"
+          title="Save Progress and Return to Dashboard">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <polyline points="16 17 21 12 16 7" />
+            <line x1="21" y1="12" x2="9" y2="12" />
           </svg>
           <span>Save &amp; Exit</span>
         </button>
@@ -246,7 +266,10 @@
           <button class="bb-close-sm" id="bb-directions-close" type="button">Close ✕</button>
         </div>
         <p id="bb-directions-text">
-          The questions in this section address a number of important reading and writing skills. Each question includes one or more passages, which may include a table or graph. Read each passage and question carefully, and then choose the best answer to the question based on the passage(s). All questions in this section are multiple-choice with four answer choices. Each question has a single best answer.
+          The questions in this section address a number of important reading and writing skills. Each question includes
+          one or more passages, which may include a table or graph. Read each passage and question carefully, and then
+          choose the best answer to the question based on the passage(s). All questions in this section are
+          multiple-choice with four answer choices. Each question has a single best answer.
         </p>
       </div>
     </div>
@@ -265,7 +288,8 @@
             <button type="button" class="hl-color-swatch active" data-color="yellow" title="Yellow Highlight"></button>
             <button type="button" class="hl-color-swatch" data-color="blue" title="Cyan Highlight"></button>
             <button type="button" class="hl-color-swatch" data-color="pink" title="Pink Highlight"></button>
-            <button type="button" class="hl-clear-btn" id="hl-clear-passage-btn" title="Clear highlights for this question">Clear Markup</button>
+            <button type="button" class="hl-clear-btn" id="hl-clear-passage-btn"
+              title="Clear highlights for this question">Clear Markup</button>
           </div>
         </div>
 
@@ -296,7 +320,8 @@
               <span id="bb-flag-label">Mark for Review</span>
             </button>
 
-            <button type="button" class="bb-abc-toggle-btn active" id="bb-strikethrough-mode-btn" title="Toggle Option Elimination / Strikethrough Tool">
+            <button type="button" class="bb-abc-toggle-btn active" id="bb-strikethrough-mode-btn"
+              title="Toggle Option Elimination / Strikethrough Tool">
               <span class="abc-strike-icon">ABC</span>
             </button>
           </div>
@@ -317,11 +342,13 @@
     </main>
 
     <!-- Draggable Floating Official Desmos Graphing Calculator Container -->
-    <div id="bb-calculator-modal" class="bb-floating-window hidden" role="dialog" aria-label="Desmos Graphing Calculator">
+    <div id="bb-calculator-modal" class="bb-floating-window hidden" role="dialog"
+      aria-label="Desmos Graphing Calculator">
       <div class="bb-floating-header" id="bb-calculator-drag-handle">
         <div class="bb-floating-title">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/>
+            <rect x="4" y="2" width="16" height="20" rx="2" />
+            <line x1="8" y1="6" x2="16" y2="6" />
           </svg>
           <span>Desmos Graphing Calculator (Drag to Move)</span>
         </div>
@@ -336,7 +363,8 @@
     </div>
 
     <!-- Draggable Math Reference Formulas Modal -->
-    <div id="bb-reference-modal" class="bb-floating-window bb-ref-window hidden" role="dialog" aria-label="Math Reference Sheet">
+    <div id="bb-reference-modal" class="bb-floating-window bb-ref-window hidden" role="dialog"
+      aria-label="Math Reference Sheet">
       <div class="bb-floating-header" id="bb-reference-drag-handle">
         <div class="bb-floating-title">
           <span>SAT Math Reference Formulas (Drag to Move)</span>
@@ -381,7 +409,8 @@
         <!-- Populated dynamically -->
       </div>
       <div class="bb-nav-popover-footer">
-        <button type="button" class="bb-btn-outline" id="bb-score-exam-early-btn">Finish &amp; Score Full Test Now</button>
+        <button type="button" class="bb-btn-outline" id="bb-score-exam-early-btn">Finish &amp; Score Full Test
+          Now</button>
         <button type="button" class="bb-btn-primary" id="bb-finish-module-popover-btn">Finish Current Module →</button>
       </div>
     </div>
@@ -440,33 +469,70 @@
     </header>
 
     <main class="rev-main">
-      <!-- Top Score Report Cards (400-1600 Composite + 200-800 Section Scaling + C/I/B Breakdown) -->
+      <!-- Collegize.ai Editorial Score Report Hero (Giant Score + Circular Mastery Ring + Sections Bars) -->
       <section class="rev-score-hero">
-        <div class="score-card total-score-card">
-          <div class="score-card-label">TOTAL COMPOSITE SCORE</div>
-          <div class="score-big-number" id="rev-total-score">1480</div>
-          <div class="score-scale-sub">400–1600 Official Scale</div>
-          <div class="score-range-pill" id="rev-total-range">Score Range: 1450–1510</div>
+        <div class="rev-hero-top-row">
+          <div class="score-card total-score-card">
+            <div class="score-card-label">ESTIMATED TOTAL SCORE</div>
+            <div class="score-big-number" id="rev-total-score">1,480</div>
+            <div class="accuracy-label" id="rev-accuracy-text">106 of 120 correct</div>
+            <div class="score-range-pill" id="rev-total-range">Official Score Range: 1450–1510</div>
+          </div>
+
+          <!-- Circular Ring Chart + Mastery Badge (Collegize.ai style) -->
+          <div class="mastery-ring-cluster">
+            <div class="mastery-ring-wrap">
+              <svg class="mastery-ring-svg" viewBox="0 0 120 120">
+                <circle class="mastery-ring-track" cx="60" cy="60" r="50" />
+                <circle class="mastery-ring-progress" id="rev-mastery-ring-circle" cx="60" cy="60" r="50"
+                  stroke-dasharray="314.16" stroke-dashoffset="78.54" />
+              </svg>
+              <div class="mastery-ring-center">
+                <span class="mastery-ring-pct" id="rev-mastery-pct">88%</span>
+              </div>
+            </div>
+            <div class="mastery-ring-meta">
+              <span class="mastery-meta-eyebrow">MASTERY</span>
+              <span class="mastery-meta-sub" id="rev-mastery-sub">Official 400–1600 Scale</span>
+            </div>
+          </div>
         </div>
 
-        <div class="score-card section-score-card">
-          <div class="score-card-label">READING AND WRITING</div>
-          <div class="score-mid-number" id="rev-rw-score">740</div>
-          <div class="score-scale-sub">200–800 Section Scale</div>
-          <div class="score-raw-detail" id="rev-rw-raw-detail">Raw Score: 58 / 66 (Mod 1: 30, Mod 2: 28)</div>
-          <div class="score-range-sub" id="rev-rw-range">Official Range: 720–760</div>
+        <!-- Clean Horizontal Sections Breakdown (Reading & Writing + Math) -->
+        <div class="rev-sections-breakdown">
+          <h3 class="rev-sections-heading">Sections</h3>
+
+          <div class="score-card section-score-card">
+            <div class="sec-row-left">
+              <div class="score-card-label">Reading and Writing</div>
+              <div class="score-raw-detail" id="rev-rw-raw-detail">Raw Score: 58 / 66 (Mod 1: 30, Mod 2: 28)</div>
+              <div class="score-range-sub" id="rev-rw-range">Official Range: 720–760</div>
+            </div>
+            <div class="sec-row-right">
+              <div class="sec-bar-track">
+                <div class="sec-bar-fill" id="rev-rw-bar" style="width: 88%;"></div>
+              </div>
+              <div class="score-mid-number" id="rev-rw-score">740</div>
+            </div>
+          </div>
+
+          <div class="score-card section-score-card">
+            <div class="sec-row-left">
+              <div class="score-card-label">Math</div>
+              <div class="score-raw-detail" id="rev-math-raw-detail">Raw Score: 48 / 54 (Mod 1: 25, Mod 2: 23)</div>
+              <div class="score-range-sub" id="rev-math-range">Official Range: 730–760</div>
+            </div>
+            <div class="sec-row-right">
+              <div class="sec-bar-track">
+                <div class="sec-bar-fill" id="rev-math-bar" style="width: 89%;"></div>
+              </div>
+              <div class="score-mid-number" id="rev-math-score">740</div>
+            </div>
+          </div>
         </div>
 
-        <div class="score-card section-score-card">
-          <div class="score-card-label">MATH SECTION</div>
-          <div class="score-mid-number" id="rev-math-score">740</div>
-          <div class="score-scale-sub">200–800 Section Scale</div>
-          <div class="score-raw-detail" id="rev-math-raw-detail">Raw Score: 48 / 54 (Mod 1: 25, Mod 2: 23)</div>
-          <div class="score-range-sub" id="rev-math-range">Official Range: 730–760</div>
-        </div>
-
+        <!-- Minimalist Correct / Incorrect / Blank Summary Strip -->
         <div class="score-card stats-breakdown-card">
-          <div class="score-card-label">PERFORMANCE METRICS</div>
           <div class="cib-grid">
             <div class="cib-stat correct">
               <span class="cib-num" id="rev-correct-count">0</span>
@@ -478,13 +544,12 @@
             </div>
             <div class="cib-stat blank">
               <span class="cib-num" id="rev-blank-count">0</span>
-              <span class="cib-lbl">Blanks</span>
+              <span class="cib-lbl">Unanswered</span>
             </div>
           </div>
           <div class="accuracy-bar-wrap">
             <div class="accuracy-bar-fill" id="rev-accuracy-bar" style="width: 0%;"></div>
           </div>
-          <div class="accuracy-label" id="rev-accuracy-text">Overall Accuracy: 0%</div>
         </div>
       </section>
 
@@ -493,7 +558,8 @@
         <div class="rev-matrix-header">
           <div>
             <h2>Interactive Question Matrix &amp; Answer Key Map</h2>
-            <p>Click any question box below to inspect the original passage, your response, the verified correct answer, and the official College Board explanation.</p>
+            <p>Click any question box below to inspect the original passage, your response, the verified correct answer,
+              and the official College Board explanation.</p>
           </div>
           <div class="rev-matrix-filters">
             <div class="rev-module-tabs" id="rev-module-tabs">
@@ -570,7 +636,8 @@
       <div class="bb-modal-badge" id="bb-modal-badge">MODULE CHECKPOINT</div>
       <h2 class="bb-modal-title" id="bb-modal-title">End of Section 1, Module 1</h2>
       <p class="bb-modal-desc" id="bb-modal-desc">
-        Your responses for this module have been saved to localStorage. Review your unanswered or flagged items below, or proceed to the next module.
+        Your responses for this module have been saved to localStorage. Review your unanswered or flagged items below,
+        or proceed to the next module.
       </p>
       <div class="bb-modal-stats" id="bb-modal-stats"></div>
       <div class="bb-modal-actions">
@@ -586,5 +653,5 @@
   <!-- Main Application Controller -->
   <script src="app.js"></script>
 </body>
-</html>
 
+</html>

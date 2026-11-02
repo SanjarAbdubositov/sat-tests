@@ -196,7 +196,7 @@
     "testNumber": 4,
     "module": 1,
     "type": "Reading",
-    "passage": "US States with the Greatest Number of\nOrganic Farms in 2016\nState\nOrganic farming is a method of growing food that\ntries to reduce environmental harm by using natural\nforms of pest control and avoiding fertilizers made\nwith synthetic materials. Organic farms are still a\nsmall fraction of the total farms in the United States,\nbut they have been becoming more popular.\nAccording to the US Department of Agriculture, in\n2016 California had between 2,600 and 2,800 organic\nfarms and _______",
+    "passage": "Organic farming is a method of growing food that\ntries to reduce environmental harm by using natural\nforms of pest control and avoiding fertilizers made\nwith synthetic materials. Organic farms are still a\nsmall fraction of the total farms in the United States,\nbut they have been becoming more popular.\nAccording to the US Department of Agriculture, in\n2016 California had between 2,600 and 2,800 organic\nfarms and _______",
     "question": "Which choice most effectively uses data from the graph to complete the text?",
     "options": [
       "Washington had between 600 and 800 organic farms.",
@@ -260,13 +260,13 @@
     "testNumber": 4,
     "module": 1,
     "type": "Reading",
-    "passage": "Effects of Mycorrhizal Fungi on 3 Plant Spec\nAverage mass of plants\ngrown in soil containing Average m\nPlant Mycorrhizal mycorrhizal fungi grown in\nspecies host (in grams) to kill fung\nCorn yes 15.1 3\nMarigold yes 10.2 2\nBroccoli no 7.5\nMycorrhizal fungi in soil benefits many plants, substantially\nthe mass of some. A student conducted an experiment to illu\neffect. The student chose three plant species for the experime\nincluding two that are mycorrhizal hosts (species known to b\nfrom mycorrhizal fungi) and one nonmycorrhizal species (a\nthat doesn’t benefit from and may even be harmed by mycor\nfungi). The student then grew several plants from each speci\nsoil containing mycorrhizal fungi and in soil that had been tr\nkill mycorrhizal and other fungi. After several weeks, the stu\nmeasured the plants’ average mass and was surprised to disco\nthat _______",
-    "question": "Which choice most effectively uses data from the table to com statement?",
+    "passage": "Mycorrhizal fungi in soil benefits many plants, substantially increasing\nthe mass of some. A student conducted an experiment to illustrate this\neffect. The student chose three plant species for the experiment,\nincluding two that are mycorrhizal hosts (species known to benefit\nfrom mycorrhizal fungi) and one nonmycorrhizal species (a species\nthat doesn’t benefit from and may even be harmed by mycorrhizal\nfungi). The student then grew several plants from each species both in\nsoil containing mycorrhizal fungi and in soil that had been treated to\nkill mycorrhizal and other fungi. After several weeks, the student\nmeasured the plants’ average mass and was surprised to discover\nthat _______",
+    "question": "Which choice most effectively uses data from the table to complete the statement?",
     "options": [
-      "broccoli grown in soil containing mycorrhizal fungi had higher average mass than broccoli grown in soil that had treated to kill fungi.",
-      "corn grown in soil containing mycorrhizal fungi had a h average mass than broccoli grown in soil containing myc fungi.",
-      "marigolds grown in soil containing mycorrhizal fungi ha higher average mass than marigolds grown in soil that h treated to kill fungi.",
-      "corn had the highest average mass of all three species gro that had been treated to kill fungi, while marigolds had t"
+      "broccoli grown in soil containing mycorrhizal fungi had a slightly higher average mass than broccoli grown in soil that had been treated to kill fungi.",
+      "corn grown in soil containing mycorrhizal fungi had a higher average mass than broccoli grown in soil containing mycorrhizal fungi.",
+      "marigolds grown in soil containing mycorrhizal fungi had a much higher average mass than marigolds grown in soil that had been treated to kill fungi.",
+      "corn had the highest average mass of all three species grown in soil that had been treated to kill fungi, while marigolds had the lowest."
     ],
     "correctAnswer": 0,
     "explanation": "Choice A is the best answer because it most effectively uses data from the table to complete the statement. The text explains that mycorrhizal hosts are plants that benefit from the presence of mycorrhizal fungi in the soil and that some such plants produce more mass when grown in the presence of these fungi, while for nonmycorrhizal species the fungi either have no effect or may be harmful. The experiment included two mycorrhizal hosts (corn and marigold) and one nonmycorrhizal species (broccoli). Given the claim in the text that nonmycorrhizal species will see either no difference or a decrease in mass when exposed to mycorrhizal fungi, the student would likely have been surprised by the higher average mass for broccoli grown in the presence of the fungi than the broccoli grown in the soil treated to kill fungi. Choice B is incorrect. Although this choice accurately describes the corn data from the table, the fact that the mycorrhizal host corn is more massive in the presence of the fungi likely fits with what the student expected and would therefore not be surprising. Choice C is incorrect. Although this choice accurately describes the marigold data from the table, the fact that the mycorrhizal host marigold is more massive in the presence of the fungi is likely what the student expected and thus would not be surprising. Choice D is incorrect because it does not accurately represent the data in the table—when grown in soil treated to kill fungi, corn had an average mass of 3.8 g while broccoli had an average mass of 7g—and because making comparisons among the plants in the no-fungi condition, by itself, does not provide a basis to compare the average mass of mycorrhizal hosts and nonmycorrhizal species grown in the presence of the fungi with those grown in the soil treated to kill fungi."
@@ -506,7 +506,7 @@
       "Park’s 2013 installation Unwoven Light, which included a chain-link fence and iridescent tiles made from plexiglass, featured light as its primary medium of expression.",
       "Korean American light artist Soo Sunny Park created Unwoven Light in 2013.",
       "The chain-link fence in Soo Sunny Park’s Unwoven Light was fitted with tiles made from iridescent plexiglass.",
-      "In Unwoven Light, a 2013 work by Korean American artist Soo Sunny Park, light formed colorful prisms as it passed through a fence Park had fitted with iridescent tiles. ST Do not turn to any ot"
+      "In Unwoven Light, a 2013 work by Korean American artist Soo Sunny Park, light formed colorful prisms as it passed through a fence Park had fitted with iridescent tiles."
     ],
     "correctAnswer": 3,
     "explanation": "Choice D is the best answer. The sentence effectively describes Unwoven Light to an audience unfamiliar with Park, noting that Soo Sunny Park is a Korean American artist and that the 2013 work consists of colorful prisms formed by light passing through iridescent tiles. Choice A is incorrect. The sentence describes aspects of Unwoven Light but doesn’t mention who Park is; it thus doesn’t effectively describe the work to an audience unfamiliar with Park. Choice B is incorrect. Although the sentence indicates when the work was created and who Park is, it lacks descriptive details and thus doesn’t effectively describe Unwoven Light. Choice C is incorrect. The sentence mentions Park and describes an aspect of Unwoven Light—the chain- link fence—but doesn’t effectively describe the overall work to an audience unfamiliar with the artist."
@@ -724,13 +724,13 @@
     "testNumber": 4,
     "module": 2,
     "type": "Reading",
-    "passage": "200\n150\n100\n50\n0\nytniatrecnU\n)ytniatrecnuerom=seulavregral(\nEconomic PolicyUncertaintyin\ntheUnitedKingdom,2005–2010\n5 6 7 8 9 0\n0 0 0 0 0 1\n0 0 0 0 0 0\n2 2 2 2 2 2\nYear\ntax and public spending policy\ntrade policy\ngeneral economic policy\nHigh levels of public uncertainty about which\neconomic policies a country will adopt can make\nplanning difficult for businesses, but measures of\nsuch uncertainty have not tended to be very detailed.\nRecently, however, economist Sandile Hlatshwayo\nanalyzed trends in news reports to derive measures\nnot only for general economic policy uncertainty but\nalso for uncertainty related to specific areas of\neconomic policy, like tax or trade policy. One\nrevelation of her work is that a general measure may\nnot fully reflect uncertainty about specific areas of",
-    "question": "policy, as in the case of the United Kingdom, where general economic policy uncertainty _______",
+    "passage": "200\n150\n100\n50\n0\nytniatrecnU\n)ytniatrecnuerom=seulavregral(\ngraph to illustrate the claim?",
+    "question": "Economic PolicyUncertaintyin theUnitedKingdom,2005–2010",
     "options": [
-      "Choice A: because the graph shows that the level of general economic policy uncertainty was similar to the level of uncertainty about tax and public spending policy in both 2005 (with values of approximately 90 and 100, respectively) and 2009 (with values of approximately 80 and 75, respectively).",
-      "Choice B: because the graph shows that general economic policy uncertainty was higher than uncertainty about tax and public spending policy in 2006, 2007, and 2009, not that it was lower each year from 2005 to 2010.",
-      "Choice C: because the graph shows that general economic policy uncertainty reached its highest level in 2010, which was when uncertainty about tax and public spending policy also reached its highest level, not its lowest level.",
-      "Choice D: because it uses data from the graph to effectively illustrate the text’s claim about general economic policy uncertainty in the United Kingdom."
+      "aligned closely with uncertainty about tax and public spending policy in 2005 but differed from uncertainty about tax and public spending policy by a large amount in 2009.",
+      "was substantially lower than uncertainty about tax and public spending policy each year from 2005 to 2010.",
+      "reached its highest level between 2005 and 2010 in the same year that uncertainty about trade policy and tax and public spending policy 0 5 0 6 0 7 0 8 0 9 1 0 reached their lowest levels. 0 0 0 0 0 0 2 2 2 2 2 2",
+      "was substantially lower than uncertainty about trade policy in 2005 and substantially higher Year than uncertainty about trade policy in 2010. tax and public spending policy trade policy general economic policy High levels of public uncertainty about which economic policies a country will adopt can make planning difficult for businesses, but measures of such uncertainty have not tended to be very detailed. Recently, however, economist Sandile Hlatshwayo analyzed trends in news reports to derive measures not only for general economic policy uncertainty but also for uncertainty related to specific areas of economic policy, like tax or trade policy. One revelation of her work is that a general measure may not fully reflect uncertainty about specific areas of policy, as in the case of the United Kingdom, where general economic policy uncertainty _______"
     ],
     "correctAnswer": 3,
     "explanation": "Choice D is the best answer because it uses data from the graph to effectively illustrate the text’s claim about general economic policy uncertainty in the United Kingdom. The graph presents values for economic policy uncertainty in tax and public spending policy, trade policy, and general economic policy in the UK from 2005 to 2010. The graph shows that in 2005, the value for general economic policy uncertainty (approximately 90) was substantially lower than the value for uncertainty about trade policy specifically (approximately 160). It also shows that in 2010, the value for general economic policy uncertainty (approximately 120) was substantially higher than the value for uncertainty about trade policy (approximately 70). The substantial differences between these values in 2005 and 2010 support the claim that a general measure may not fully reflect uncertainty about specific areas of policy. Choice A is incorrect because the graph shows that the level of general economic policy uncertainty was similar to the level of uncertainty about tax and public spending policy in both 2005 (with values of approximately 90 and 100, respectively) and 2009 (with values of approximately 80 and 75, respectively). Choice B is incorrect because the graph shows that general economic policy uncertainty was higher than uncertainty about tax and public spending policy in 2006, 2007, and 2009, not that it was lower each year from 2005 to 2010. Choice C is incorrect because the graph shows that general economic policy uncertainty reached its highest level in 2010, which was when uncertainty about tax and public spending policy also reached its highest level, not its lowest level."
@@ -1034,7 +1034,7 @@
       "Cathryn Halverson’s Faraway Women and the “Atlantic Monthly” discusses female authors whose autobiographies appeared in the magazine in the early 1900s.",
       "A magazine called the Atlantic Monthly, referred to in Cathryn Halverson’s book title, was first published in 1857.",
       "Faraway Women and the “Atlantic Monthly” features contributors to the Atlantic Monthly, first published in 1857 as a magazine focusing on politics, art, and literature.",
-      "An author discussed by Cathryn Halverson is Juanita Harrison, whose autobiography appeared in the Atlantic Monthly in the early 1900s. STO Do not turn to any othe"
+      "An author discussed by Cathryn Halverson is Juanita Harrison, whose autobiography appeared in the Atlantic Monthly in the early 1900s."
     ],
     "correctAnswer": 0,
     "explanation": "Choice A is the best answer. The sentence effectively introduces Cathryn Halverson’s book to an audience already familiar with the Atlantic Monthly, noting the title of Halverson’s book and describing its content without providing background information about the Atlantic Monthly. Choice B is incorrect. The sentence introduces the Atlantic Monthly and mentions that it’s referred to in Cathryn Halverson’s book title; it doesn’t effectively introduce Halverson’s book. Choice C is incorrect. The sentence assumes that the audience is unfamiliar with the Atlantic Monthly, providing background information about the magazine; it doesn’t effectively introduce Halverson’s book to an audience already familiar with the Atlantic Monthly. Choice D is incorrect. While the sentence assumes that the audience is familiar with the Atlantic Monthly, it doesn’t effectively introduce Cathryn Halverson’s book."
@@ -1450,7 +1450,7 @@
       "29 2",
       "58 2",
       "58 +58 2",
-      "58 +116 2 ST Do not turn to any ot"
+      "58 +116 2"
     ],
     "correctAnswer": 2,
     "explanation": "Choice C is correct. Since the triangle is an isosceles right triangle, the two sides that form the right angle must be the same length. Let x be the length, in inches, of each of those sides. The Pythagorean theorem states that in a right triangle, 222abc+= , where c is the length of the hypotenuse and a and b are the lengths of the other two sides. Substituting x for a, x for b, and 58 for c in this equation yields 22 2 58xx+=, or 222 58x= . Dividing each side of this equation by 2 yields 22 58 2x= , or  22 2 58 4x= . T aking the square root of each side of this equation yields two solutions: 58 2 2x= and 58 2 2x=- . The value of x must be positive because it represents a side length. Therefore, 58 2 2x= , or 29 2x=. The perimeter, in inches, of the triangle is 58xx++ , or 58 2x+ . Substituting 29 2 for x in this expression gives a perimeter, in inches, of ( )58 2 29 2+ , or 58 58 2+ . Choice A is incorrect. This is the length, in inches, of each of the congruent sides of the triangle, not the perimeter, in inches, of the triangle. Choice B is incorrect. This is the sum of the lengths, in inches, of the congruent sides of the triangle, not nn the perimeter, in inches, of the triangle. Choice D is incorrect and may result from conceptual or calculation errors."
@@ -1828,7 +1828,7 @@
     "testNumber": 4,
     "module": 2,
     "type": "Math",
-    "passage": "y\n10\n8\n6\n-1--l. -\nX\n-1 0 -8 -6 -4 -2-\"-',---2-,-4-,--6--8-10\n:2\n4\n6\nI\n18\n10\n1",
+    "passage": "y\n10\n8\n6\n-1--l. -\nX\n-1 0 -8 -6 -4 -2-\"-',---2-,-4-,--6--8-10\n4\n6\nI\n18\n10\n1",
     "question": "If a new graph of three linear equations is created using the system of equations shown and the equation x +4y = −16, how many solutions (x, y) will the resulting system of three equations have?",
     "options": [
       "Zero",
@@ -1882,7 +1882,7 @@
       "(x −2)2 +(y −1)2 = 49",
       "x 2+(y −3)2 = 49",
       "(x +2)2 +(y −1)2 = 49",
-      "x 2+(y +1)2 = 49 STO"
+      "x 2+(y +1)2 = 49"
     ],
     "correctAnswer": 3,
     "explanation": "Choice D is correct. The graph in the xy-plane of an equation of the form ( ) ( ) 22 2xh yk r- +- = is a circle with center ( ), hk and a radius of length r . It’s given that circle A is represented by ( ) 22 1 49xy +- = , which can be rewritten as ( ) 222 17xy +- = . Therefore, circle A has center ( )0, 1 and a radius of length 7. Shifting circle A down two units is a rigid vertical translation of circle A that does not change its size or shape. Since circle B is obtained by shifting circle A down two units, it follows that circle B has the same radius as circle A, and for each point ( ), xy on circle A, the point ( ), 2xy - lies on circle B. Moreover, if ( ), hk is the center of circle A, then ( ), 2hk - is the center of circle B. Therefore, circle B has a radius of 7 and the center of circle B is ( )0, 1 2- , or ( )0, 1- . Thus, circle B can be represented by the equation ( ) 222 17xy ++ = , or ( ) 22 1 49xy ++ = . Choice A is incorrect. This is the equation of a circle obtained by shifting circle A right 2 units. Choice B is incorrect. This is the equation of a circle obtained by shifting circle A up 2 units. Choice C is incorrect. This is the equation of a circle obtained by shifting circle A left 2 units."
