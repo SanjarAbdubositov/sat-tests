@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bluebook™ Digital SAT Mock Platform — College Board 1:1 Client Cloner</title>
+  <!-- Google Fonts for authentic Bluebook UI & serif reading passages -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Official Desmos Graphing Calculator API Script (Required 1:1 Specification) -->
+  <script src="https://www.desmos.com/api/v1.12/calculator.js?apiKey=17316a9092414f63a2c22387daa23098"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ====================================================================
+       VIEW 1: DASHBOARD & MOCK SELECTOR + ADMINISTRATION LOG PANEL
+       ==================================================================== -->
+  <div id="dashboard-view" class="view-container active-view">
+    <header class="db-header">
+      <div class="db-header-inner">
+        <div class="db-brand">
+          <div class="db-logo-mark" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="3" width="20" height="18" rx="3" fill="#002d62" stroke="#60a5fa" stroke-width="1.6"/>
+              <path d="M7 8h10M7 12h10M7 16h6" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="db-brand-badge">COLLEGE BOARD DIGITAL SAT SUITE</div>
+            <h1 class="db-brand-title">Bluebook™ Client Cloner</h1>
+          </div>
+        </div>
+
+        <div class="db-user-cluster">
+          <div class="db-sync-pill" id="ingestion-status-pill" title="Automated PDF Ingestion Status">
+            <span class="status-dot online"></span>
+            <span id="ingestion-status-text">8 Practice Tests Synced (960 Items)</span>
+          </div>
+          <div class="db-user-card">
+            <div class="db-avatar" id="user-avatar-initials">SA</div>
+            <div class="db-user-meta">
+              <span class="db-user-name" id="active-user-name">Sanjar Abdubositov</span>
+              <span class="db-user-role">Candidate ID: #CB-84920-UZ • Local Exam Client</span>
+            </div>
+            <button class="btn-icon-subtle" id="edit-profile-btn" title="Switch or Edit Candidate Name">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="db-main">
+      <!-- Top Summary Metrics -->
+      <section class="db-kpi-strip" aria-label="Candidate Overview Metrics">
+        <div class="kpi-card">
+          <div class="kpi-label">Available Official Mocks</div>
+          <div class="kpi-value" id="kpi-available-mocks">8 Tests</div>
+          <div class="kpi-sub">Practice Tests #4 – #11 (960 Qs)</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Highest Composite Score</div>
+          <div class="kpi-value accent-navy" id="kpi-highest-score">—</div>
+          <div class="kpi-sub" id="kpi-highest-sub">400–1600 Official Scale</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Completed Mock Attempts</div>
+          <div class="kpi-value" id="kpi-completed-count">0</div>
+          <div class="kpi-sub" id="kpi-avg-accuracy">Avg Accuracy: —</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Session Entrance Logs</div>
+          <div class="kpi-value" id="kpi-session-count">0</div>
+          <div class="kpi-sub" id="kpi-last-entrance">Persistent in localStorage</div>
+        </div>
+      </section>
+
+      <!-- Practice Tests 4 through 11 Grid -->
+      <section class="db-section">
+        <div class="db-section-header">
+          <div>
+            <h2 class="db-section-title">Full-Length Digital SAT Practice Tests (Tests 4 – 11)</h2>
+            <p class="db-section-desc">
+              Automatically ingested from local PDF test books, official answer keys, and raw-to-scale scoring tables. Select any test to launch the 1:1 Bluebook simulation environment.
+            </p>
+          </div>
+          <div class="db-filter-group">
+            <button class="filter-chip active" data-filter="all">All Mocks (8)</button>
+            <button class="filter-chip" data-filter="in-progress">In Progress</button>
+            <button class="filter-chip" data-filter="completed">Completed</button>
+          </div>
+        </div>
+
+        <div id="mock-cards-grid" class="mock-cards-grid">
+          <!-- Populated dynamically from mock4.json .. mock11.json -->
+        </div>
+      </section>
+
+      <!-- Local Administration & Telemetry Panel -->
+      <section class="db-section admin-panel-section">
+        <div class="db-section-header">
+          <div>
+            <div class="admin-eyebrow">LOCALSTORAGE PERSISTENT TELEMETRY</div>
+            <h2 class="db-section-title">Administration Panel & Historical Score Logs</h2>
+            <p class="db-section-desc">
+              Real-time audit log tracking candidate session entrances, module transitions, completion metrics, and scaled score histories.
+            </p>
+          </div>
+          <div class="admin-actions">
+            <button class="btn-secondary-sm" id="export-telemetry-btn">Export Telemetry JSON</button>
+            <button class="btn-danger-sm" id="clear-telemetry-btn">Reset Local Records</button>
+          </div>
+        </div>
+
+        <div class="admin-grid">
+          <!-- Historical Score Records Table -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3>Completed Exam Score History</h3>
+              <span class="badge-pill" id="score-history-badge">0 Records</span>
+            </div>
+            <div class="table-scroll">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Exam</th>
+                    <th>Composite</th>
+                    <th>R&W</th>
+                    <th>Math</th>
+                    <th>C / I / B</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="score-history-tbody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Session Entrance & Activity Audit Log -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3>Session Entrance & Activity Logs</h3>
+              <span class="badge-pill" id="session-logs-badge">0 Events</span>
+            </div>
+            <div class="audit-log-list" id="session-audit-log">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ====================================================================
+       VIEW 2: 1:1 BLUEBOOK TESTING CLIENT (EXAM ENGINE)
+       ==================================================================== -->
+  <div id="exam-view" class="view-container exam-lockdown" oncontextmenu="return false;">
+    <!-- Authentic Bluebook Top Dashed Decorative Border -->
+    <div class="bb-border-strip"></div>
+
+    <!-- Top Navigation Bar (#002d62 Navy Aesthetics) -->
+    <header class="bb-topbar">
+      <!-- Left: Active SAT Section Identifier, Test Title & Directions -->
+      <div class="bb-topbar-left">
+        <div class="bb-section-info">
+          <div class="bb-section-title" id="bb-active-section-title">Section 1, Module 1: Reading and Writing</div>
+          <div class="bb-sub-row">
+            <span class="bb-test-badge" id="bb-active-test-title">SAT Practice Test #4</span>
+            <button class="bb-directions-btn" id="bb-directions-toggle" type="button">
+              <span>Directions</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="bb-module-quick-jump">
+              <label for="bb-module-selector" class="sr-only">Module</label>
+              <select id="bb-module-selector" class="bb-module-select" title="Switch Active Module">
+                <option value="0">Sec 1, Mod 1: Reading & Writing (32:00)</option>
+                <option value="1">Sec 1, Mod 2: Reading & Writing (32:00)</option>
+                <option value="2">Sec 2, Mod 1: Math (35:00)</option>
+                <option value="3">Sec 2, Mod 2: Math (35:00)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center: Standardized Module Countdown Timer (32:00 RW / 35:00 Math) + Hide/Show Toggle -->
+      <div class="bb-topbar-center">
+        <div class="bb-timer-display" id="bb-timer-value" aria-live="off">32:00</div>
+        <div class="bb-timer-hidden-icon hidden" id="bb-timer-hidden-indicator" title="Timer Hidden">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <button class="bb-timer-toggle-btn" id="bb-timer-toggle-btn" type="button">Hide</button>
+      </div>
+
+      <!-- Right: Calculator Trigger, Highlighter Tool, Reference Sheet & Exit -->
+      <div class="bb-topbar-right">
+        <button class="bb-tool-btn" id="bb-highlighter-toggle-btn" type="button" title="Toggle Passage Line Highlighter">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+          </svg>
+          <span>Highlights &amp; Notes</span>
+        </button>
+
+        <button class="bb-tool-btn" id="bb-calculator-btn" type="button" title="Open Official Desmos Graphing Calculator">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/>
+            <line x1="8" y1="10" x2="8" y2="10.01"/><line x1="12" y1="10" x2="12" y2="10.01"/><line x1="16" y1="10" x2="16" y2="10.01"/>
+            <line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="16" y1="14" x2="16" y2="14.01"/>
+            <line x1="8" y1="18" x2="16" y2="18"/>
+          </svg>
+          <span>Calculator</span>
+        </button>
+
+        <button class="bb-tool-btn" id="bb-reference-btn" type="button" title="Open Math Reference Sheet">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          <span>Reference</span>
+        </button>
+
+        <button class="bb-tool-btn bb-exit-btn" id="bb-save-exit-btn" type="button" title="Save Progress and Return to Dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+          <span>Save &amp; Exit</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Directions Popover Banner -->
+    <div id="bb-directions-popover" class="bb-directions-popover hidden">
+      <div class="bb-directions-content">
+        <div class="bb-directions-header">
+          <strong id="bb-directions-heading">Module Directions</strong>
+          <button class="bb-close-sm" id="bb-directions-close" type="button">Close ✕</button>
+        </div>
+        <p id="bb-directions-text">
+          The questions in this section address a number of important reading and writing skills. Each question includes one or more passages, which may include a table or graph. Read each passage and question carefully, and then choose the best answer to the question based on the passage(s). All questions in this section are multiple-choice with four answer choices. Each question has a single best answer.
+        </p>
+      </div>
+    </div>
+
+    <!-- Split-View Exam Workspace Grid -->
+    <main class="bb-workspace" id="bb-workspace">
+      <!-- LEFT COLUMN: Reading Passage or Math Scenario Parameters + Line Highlighter Tool -->
+      <section class="bb-pane bb-left-pane" id="bb-left-pane" aria-label="Passage and Scenario Context">
+        <div class="bb-highlighter-bar" id="bb-highlighter-bar">
+          <div class="hl-bar-left">
+            <span class="hl-status-badge" id="hl-mode-indicator">
+              <span class="hl-dot"></span> Line Highlighter: Active (Click any line or select text)
+            </span>
+          </div>
+          <div class="hl-bar-controls">
+            <button type="button" class="hl-color-swatch active" data-color="yellow" title="Yellow Highlight"></button>
+            <button type="button" class="hl-color-swatch" data-color="blue" title="Cyan Highlight"></button>
+            <button type="button" class="hl-color-swatch" data-color="pink" title="Pink Highlight"></button>
+            <button type="button" class="hl-clear-btn" id="hl-clear-passage-btn" title="Clear highlights for this question">Clear Markup</button>
+          </div>
+        </div>
+
+        <div class="bb-passage-content" id="bb-passage-container">
+          <!-- Populated dynamically with line-highlightable interactive lines -->
+        </div>
+      </section>
+
+      <!-- Resizable Center Divider Handle -->
+      <div class="bb-divider" id="bb-pane-divider" title="Drag to adjust split view width">
+        <div class="bb-divider-grip">⋮</div>
+      </div>
+
+      <!-- RIGHT COLUMN: Question Progress, Prompt, Flag for Review, Strikethrough Mode & 4 Options -->
+      <section class="bb-pane bb-right-pane" id="bb-right-pane" aria-label="Question and Answer Choices">
+        <div class="bb-question-card">
+          <!-- Top Question Meta Strip -->
+          <div class="bb-q-header-strip">
+            <div class="bb-q-num-cluster">
+              <span class="bb-q-number-box" id="bb-q-number-box">1</span>
+              <span class="bb-q-progress-text" id="bb-q-progress-text">Question 1 of 33</span>
+            </div>
+
+            <button type="button" class="bb-flag-btn" id="bb-flag-review-btn" title="Flag this question for review">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span id="bb-flag-label">Mark for Review</span>
+            </button>
+
+            <button type="button" class="bb-abc-toggle-btn active" id="bb-strikethrough-mode-btn" title="Toggle Option Elimination / Strikethrough Tool">
+              <span class="abc-strike-icon">ABC</span>
+            </button>
+          </div>
+
+          <div class="bb-q-dashed-rule"></div>
+
+          <!-- Question Prompt Text -->
+          <div class="bb-question-prompt" id="bb-question-prompt">
+            <!-- Populated dynamically -->
+          </div>
+
+          <!-- 4 Multiple-Choice Alternatives (A, B, C, D) with Strikethrough Support -->
+          <div class="bb-options-list" id="bb-options-container" role="radiogroup" aria-label="Answer Choices">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Draggable Floating Official Desmos Graphing Calculator Container -->
+    <div id="bb-calculator-modal" class="bb-floating-window hidden" role="dialog" aria-label="Desmos Graphing Calculator">
+      <div class="bb-floating-header" id="bb-calculator-drag-handle">
+        <div class="bb-floating-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/>
+          </svg>
+          <span>Desmos Graphing Calculator (Drag to Move)</span>
+        </div>
+        <div class="bb-floating-actions">
+          <button type="button" class="bb-win-btn" id="bb-calc-close-btn" title="Close Calculator">✕</button>
+        </div>
+      </div>
+      <div class="bb-floating-body">
+        <!-- Exact Required Desmos Container Element -->
+        <div id="calculator" style="width: 600px; height: 400px;"></div>
+      </div>
+    </div>
+
+    <!-- Draggable Math Reference Formulas Modal -->
+    <div id="bb-reference-modal" class="bb-floating-window bb-ref-window hidden" role="dialog" aria-label="Math Reference Sheet">
+      <div class="bb-floating-header" id="bb-reference-drag-handle">
+        <div class="bb-floating-title">
+          <span>SAT Math Reference Formulas (Drag to Move)</span>
+        </div>
+        <div class="bb-floating-actions">
+          <button type="button" class="bb-win-btn" id="bb-ref-close-btn" title="Close Reference Sheet">✕</button>
+        </div>
+      </div>
+      <div class="bb-ref-body">
+        <div class="ref-grid">
+          <div class="ref-item"><strong>Circle:</strong> Area = πr² &nbsp;|&nbsp; Circumference = 2πr</div>
+          <div class="ref-item"><strong>Rectangle:</strong> Area = lw</div>
+          <div class="ref-item"><strong>Triangle:</strong> Area = ½bh &nbsp;|&nbsp; Pythagorean: c² = a² + b²</div>
+          <div class="ref-item"><strong>Sphere:</strong> Volume = (4/3)πr³</div>
+          <div class="ref-item"><strong>Cylinder:</strong> Volume = πr²h</div>
+          <div class="ref-item"><strong>Cone:</strong> Volume = (1/3)πr²h</div>
+          <div class="ref-item"><strong>Rectangular Prism:</strong> Volume = lwh</div>
+          <div class="ref-item"><strong>Pyramid:</strong> Volume = (1/3)lwh</div>
+        </div>
+        <ul class="ref-notes">
+          <li>The number of degrees of arc in a circle is 360.</li>
+          <li>The number of radians of arc in a circle is 2π.</li>
+          <li>The sum of the measures in degrees of the angles of a triangle is 180.</li>
+          <li>Special Right Triangles: 30°–60°–90° (x, x√3, 2x) and 45°–45°–90° (s, s, s√2).</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Expandable Question Navigator Popover Drawer -->
+    <div id="bb-navigator-popover" class="bb-nav-popover hidden" role="dialog" aria-label="Question Navigator Map">
+      <div class="bb-nav-popover-header">
+        <h3 id="bb-nav-popover-title">Section 1, Module 1: Reading and Writing</h3>
+        <button type="button" class="bb-close-sm" id="bb-nav-popover-close">✕</button>
+      </div>
+      <div class="bb-nav-legend">
+        <span class="leg-item"><span class="leg-box current"></span> Current</span>
+        <span class="leg-item"><span class="leg-box answered"></span> Answered</span>
+        <span class="leg-item"><span class="leg-box unanswered"></span> Unanswered</span>
+        <span class="leg-item"><span class="leg-flag">⚑</span> For Review</span>
+      </div>
+      <div class="bb-nav-popover-grid" id="bb-nav-popover-grid">
+        <!-- Populated dynamically -->
+      </div>
+      <div class="bb-nav-popover-footer">
+        <button type="button" class="bb-btn-outline" id="bb-score-exam-early-btn">Finish &amp; Score Full Test Now</button>
+        <button type="button" class="bb-btn-primary" id="bb-finish-module-popover-btn">Finish Current Module →</button>
+      </div>
+    </div>
+
+    <!-- Authentic Bluebook Bottom Dashed Decorative Border -->
+    <div class="bb-border-strip bottom-strip"></div>
+
+    <!-- Bottom Controls Row -->
+    <footer class="bb-bottombar">
+      <!-- Left: Candidate Name & Previous Button -->
+      <div class="bb-bottom-left">
+        <span class="bb-candidate-label" id="bb-bottom-candidate-name">Sanjar Abdubositov</span>
+        <button type="button" class="bb-nav-btn" id="bb-prev-btn">Back</button>
+      </div>
+
+      <!-- Center: Clickable Question Navigator Boxes (1 to N) + Popover Trigger -->
+      <div class="bb-bottom-center">
+        <button type="button" class="bb-q-pill-trigger" id="bb-q-pill-trigger" title="Toggle Full Question Map">
+          <span id="bb-pill-trigger-text">Question 1 of 33</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </button>
+        <div class="bb-inline-q-strip" id="bb-inline-q-strip" aria-label="Quick Question Boxes">
+          <!-- Clickable Question Navigator boxes 1..N rendered here -->
+        </div>
+      </div>
+
+      <!-- Right: Next or Finish Module Controller -->
+      <div class="bb-bottom-right">
+        <button type="button" class="bb-nav-btn bb-next-btn" id="bb-next-btn">Next</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ====================================================================
+       VIEW 3: ADVANCED SCORING & EXPLANATION ENGINE (REVIEW PAGE)
+       ==================================================================== -->
+  <div id="review-view" class="view-container">
+    <header class="rev-header">
+      <div class="rev-header-inner">
+        <div class="rev-brand">
+          <button type="button" class="btn-back-dashboard" id="rev-back-dashboard-btn">
+            ← Back to Mock Dashboard
+          </button>
+          <div>
+            <div class="rev-eyebrow">OFFICIAL BLUEBOOK SCORE REPORT &amp; RATIONALE ENGINE</div>
+            <h1 class="rev-title" id="rev-exam-title">SAT Practice Test #4 — Diagnostic Score Analysis</h1>
+          </div>
+        </div>
+        <div class="rev-header-meta">
+          <span class="rev-timestamp" id="rev-completion-timestamp">Completed Today</span>
+          <button type="button" class="btn-primary-sm" id="rev-retake-exam-btn">Retake Practice Test</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="rev-main">
+      <!-- Top Score Report Cards (400-1600 Composite + 200-800 Section Scaling + C/I/B Breakdown) -->
+      <section class="rev-score-hero">
+        <div class="score-card total-score-card">
+          <div class="score-card-label">TOTAL COMPOSITE SCORE</div>
+          <div class="score-big-number" id="rev-total-score">1480</div>
+          <div class="score-scale-sub">400–1600 Official Scale</div>
+          <div class="score-range-pill" id="rev-total-range">Score Range: 1450–1510</div>
+        </div>
+
+        <div class="score-card section-score-card">
+          <div class="score-card-label">READING AND WRITING</div>
+          <div class="score-mid-number" id="rev-rw-score">740</div>
+          <div class="score-scale-sub">200–800 Section Scale</div>
+          <div class="score-raw-detail" id="rev-rw-raw-detail">Raw Score: 58 / 66 (Mod 1: 30, Mod 2: 28)</div>
+          <div class="score-range-sub" id="rev-rw-range">Official Range: 720–760</div>
+        </div>
+
+        <div class="score-card section-score-card">
+          <div class="score-card-label">MATH SECTION</div>
+          <div class="score-mid-number" id="rev-math-score">740</div>
+          <div class="score-scale-sub">200–800 Section Scale</div>
+          <div class="score-raw-detail" id="rev-math-raw-detail">Raw Score: 48 / 54 (Mod 1: 25, Mod 2: 23)</div>
+          <div class="score-range-sub" id="rev-math-range">Official Range: 730–760</div>
+        </div>
+
+        <div class="score-card stats-breakdown-card">
+          <div class="score-card-label">PERFORMANCE METRICS</div>
+          <div class="cib-grid">
+            <div class="cib-stat correct">
+              <span class="cib-num" id="rev-correct-count">0</span>
+              <span class="cib-lbl">Correct</span>
+            </div>
+            <div class="cib-stat incorrect">
+              <span class="cib-num" id="rev-incorrect-count">0</span>
+              <span class="cib-lbl">Incorrect</span>
+            </div>
+            <div class="cib-stat blank">
+              <span class="cib-num" id="rev-blank-count">0</span>
+              <span class="cib-lbl">Blanks</span>
+            </div>
+          </div>
+          <div class="accuracy-bar-wrap">
+            <div class="accuracy-bar-fill" id="rev-accuracy-bar" style="width: 0%;"></div>
+          </div>
+          <div class="accuracy-label" id="rev-accuracy-text">Overall Accuracy: 0%</div>
+        </div>
+      </section>
+
+      <!-- Interactive Question Matrix (Color-Coded Grid Map) -->
+      <section class="rev-matrix-section">
+        <div class="rev-matrix-header">
+          <div>
+            <h2>Interactive Question Matrix &amp; Answer Key Map</h2>
+            <p>Click any question box below to inspect the original passage, your response, the verified correct answer, and the official College Board explanation.</p>
+          </div>
+          <div class="rev-matrix-filters">
+            <div class="rev-module-tabs" id="rev-module-tabs">
+              <button type="button" class="rev-tab active" data-mod="all">All Questions (120)</button>
+              <button type="button" class="rev-tab" data-mod="0">R&amp;W Module 1 (33)</button>
+              <button type="button" class="rev-tab" data-mod="1">R&amp;W Module 2 (33)</button>
+              <button type="button" class="rev-tab" data-mod="2">Math Module 1 (27)</button>
+              <button type="button" class="rev-tab" data-mod="3">Math Module 2 (27)</button>
+            </div>
+            <div class="rev-status-legend">
+              <span class="m-leg"><span class="m-dot correct"></span> Correct</span>
+              <span class="m-leg"><span class="m-dot incorrect"></span> Incorrect</span>
+              <span class="m-leg"><span class="m-dot blank"></span> Unanswered / Blank</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="rev-question-matrix" class="rev-question-matrix">
+          <!-- Color-coded clickable question boxes rendered here -->
+        </div>
+      </section>
+
+      <!-- Split-Screen Explanations Workspace -->
+      <section class="rev-explanation-workspace" id="rev-explanation-workspace">
+        <div class="rev-exp-header">
+          <div class="rev-exp-title-cluster">
+            <span class="rev-q-badge" id="rev-detail-q-badge">Question 1</span>
+            <span class="rev-mod-badge" id="rev-detail-mod-badge">Reading &amp; Writing • Module 1</span>
+            <span class="rev-outcome-pill" id="rev-detail-outcome-pill">Correct</span>
+          </div>
+          <div class="rev-exp-nav">
+            <button type="button" class="btn-secondary-sm" id="rev-prev-item-btn">← Previous Question</button>
+            <button type="button" class="btn-secondary-sm" id="rev-next-item-btn">Next Question →</button>
+          </div>
+        </div>
+
+        <div class="rev-split-grid">
+          <!-- Left Review Column: Original Passage & Question Prompt -->
+          <div class="rev-split-left">
+            <div class="rev-panel-label">PASSAGE / SCENARIO CONTEXT</div>
+            <div class="rev-passage-box" id="rev-detail-passage"></div>
+
+            <div class="rev-panel-label mt-16">QUESTION PROMPT</div>
+            <div class="rev-question-box" id="rev-detail-question"></div>
+          </div>
+
+          <!-- Right Review Column: User Input vs Verified Answer + Official Rationale -->
+          <div class="rev-split-right">
+            <div class="rev-answer-comparison-strip">
+              <div class="ans-comp-box user-ans-box" id="rev-user-ans-box">
+                <span class="ans-comp-label">YOUR ANSWER</span>
+                <span class="ans-comp-val" id="rev-detail-user-ans">B</span>
+              </div>
+              <div class="ans-comp-box correct-ans-box">
+                <span class="ans-comp-label">VERIFIED CORRECT ANSWER</span>
+                <span class="ans-comp-val" id="rev-detail-correct-ans">B</span>
+              </div>
+            </div>
+
+            <div class="rev-panel-label">ANSWER ALTERNATIVES</div>
+            <div class="rev-options-review-list" id="rev-detail-options"></div>
+
+            <div class="rev-panel-label mt-16">OFFICIAL COLLEGE BOARD EXPLANATION &amp; RATIONALE</div>
+            <div class="rev-explanation-box" id="rev-detail-explanation"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Module Transition / Finalization Modal -->
+  <div id="bb-transition-modal" class="bb-modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="bb-modal-card">
+      <div class="bb-modal-badge" id="bb-modal-badge">MODULE CHECKPOINT</div>
+      <h2 class="bb-modal-title" id="bb-modal-title">End of Section 1, Module 1</h2>
+      <p class="bb-modal-desc" id="bb-modal-desc">
+        Your responses for this module have been saved to localStorage. Review your unanswered or flagged items below, or proceed to the next module.
+      </p>
+      <div class="bb-modal-stats" id="bb-modal-stats"></div>
+      <div class="bb-modal-actions">
+        <button type="button" class="bb-btn-outline" id="bb-modal-return-btn">Return to Questions</button>
+        <button type="button" class="bb-btn-outline" id="bb-modal-score-now-btn">Finish &amp; Score Exam Now</button>
+        <button type="button" class="bb-btn-primary" id="bb-modal-confirm-next-btn">Continue to Next Module →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pre-bundled local data fallback for zero-CORS file:// execution -->
+  <script src="data/mocks_bundle.js"></script>
+  <!-- Main Application Controller -->
+  <script src="app.js"></script>
+</body>
+</html>
+

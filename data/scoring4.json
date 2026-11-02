@@ -1,0 +1,616 @@
+{
+  "Reading": {
+    "0": {
+      "lower": 200,
+      "upper": 200,
+      "scaled": 200
+    },
+    "1": {
+      "lower": 200,
+      "upper": 200,
+      "scaled": 200
+    },
+    "2": {
+      "lower": 200,
+      "upper": 200,
+      "scaled": 200
+    },
+    "3": {
+      "lower": 200,
+      "upper": 200,
+      "scaled": 200
+    },
+    "4": {
+      "lower": 200,
+      "upper": 200,
+      "scaled": 200
+    },
+    "5": {
+      "lower": 200,
+      "upper": 200,
+      "scaled": 200
+    },
+    "6": {
+      "lower": 200,
+      "upper": 200,
+      "scaled": 200
+    },
+    "7": {
+      "lower": 200,
+      "upper": 210,
+      "scaled": 200
+    },
+    "8": {
+      "lower": 200,
+      "upper": 220,
+      "scaled": 210
+    },
+    "9": {
+      "lower": 210,
+      "upper": 230,
+      "scaled": 220
+    },
+    "10": {
+      "lower": 230,
+      "upper": 250,
+      "scaled": 240
+    },
+    "11": {
+      "lower": 240,
+      "upper": 260,
+      "scaled": 250
+    },
+    "12": {
+      "lower": 250,
+      "upper": 270,
+      "scaled": 260
+    },
+    "13": {
+      "lower": 260,
+      "upper": 280,
+      "scaled": 270
+    },
+    "14": {
+      "lower": 280,
+      "upper": 300,
+      "scaled": 290
+    },
+    "15": {
+      "lower": 290,
+      "upper": 310,
+      "scaled": 300
+    },
+    "16": {
+      "lower": 320,
+      "upper": 340,
+      "scaled": 330
+    },
+    "17": {
+      "lower": 340,
+      "upper": 360,
+      "scaled": 350
+    },
+    "18": {
+      "lower": 350,
+      "upper": 370,
+      "scaled": 360
+    },
+    "19": {
+      "lower": 360,
+      "upper": 380,
+      "scaled": 370
+    },
+    "20": {
+      "lower": 370,
+      "upper": 390,
+      "scaled": 380
+    },
+    "21": {
+      "lower": 370,
+      "upper": 390,
+      "scaled": 380
+    },
+    "22": {
+      "lower": 380,
+      "upper": 400,
+      "scaled": 390
+    },
+    "23": {
+      "lower": 390,
+      "upper": 410,
+      "scaled": 400
+    },
+    "24": {
+      "lower": 400,
+      "upper": 420,
+      "scaled": 410
+    },
+    "25": {
+      "lower": 410,
+      "upper": 430,
+      "scaled": 420
+    },
+    "26": {
+      "lower": 420,
+      "upper": 440,
+      "scaled": 430
+    },
+    "27": {
+      "lower": 420,
+      "upper": 440,
+      "scaled": 430
+    },
+    "28": {
+      "lower": 430,
+      "upper": 450,
+      "scaled": 440
+    },
+    "29": {
+      "lower": 440,
+      "upper": 460,
+      "scaled": 450
+    },
+    "30": {
+      "lower": 450,
+      "upper": 470,
+      "scaled": 460
+    },
+    "31": {
+      "lower": 460,
+      "upper": 480,
+      "scaled": 470
+    },
+    "32": {
+      "lower": 460,
+      "upper": 480,
+      "scaled": 470
+    },
+    "33": {
+      "lower": 470,
+      "upper": 490,
+      "scaled": 480
+    },
+    "34": {
+      "lower": 480,
+      "upper": 500,
+      "scaled": 490
+    },
+    "35": {
+      "lower": 490,
+      "upper": 510,
+      "scaled": 500
+    },
+    "36": {
+      "lower": 490,
+      "upper": 510,
+      "scaled": 500
+    },
+    "37": {
+      "lower": 500,
+      "upper": 520,
+      "scaled": 510
+    },
+    "38": {
+      "lower": 510,
+      "upper": 530,
+      "scaled": 520
+    },
+    "39": {
+      "lower": 520,
+      "upper": 540,
+      "scaled": 530
+    },
+    "40": {
+      "lower": 530,
+      "upper": 550,
+      "scaled": 540
+    },
+    "41": {
+      "lower": 540,
+      "upper": 560,
+      "scaled": 550
+    },
+    "42": {
+      "lower": 540,
+      "upper": 560,
+      "scaled": 550
+    },
+    "43": {
+      "lower": 550,
+      "upper": 570,
+      "scaled": 560
+    },
+    "44": {
+      "lower": 560,
+      "upper": 580,
+      "scaled": 570
+    },
+    "45": {
+      "lower": 570,
+      "upper": 590,
+      "scaled": 580
+    },
+    "46": {
+      "lower": 580,
+      "upper": 600,
+      "scaled": 590
+    },
+    "47": {
+      "lower": 590,
+      "upper": 610,
+      "scaled": 600
+    },
+    "48": {
+      "lower": 590,
+      "upper": 610,
+      "scaled": 600
+    },
+    "49": {
+      "lower": 600,
+      "upper": 620,
+      "scaled": 610
+    },
+    "50": {
+      "lower": 610,
+      "upper": 630,
+      "scaled": 620
+    },
+    "51": {
+      "lower": 620,
+      "upper": 640,
+      "scaled": 630
+    },
+    "52": {
+      "lower": 630,
+      "upper": 650,
+      "scaled": 640
+    },
+    "53": {
+      "lower": 630,
+      "upper": 650,
+      "scaled": 640
+    },
+    "54": {
+      "lower": 640,
+      "upper": 660,
+      "scaled": 650
+    },
+    "55": {
+      "lower": 650,
+      "upper": 670,
+      "scaled": 660
+    },
+    "56": {
+      "lower": 660,
+      "upper": 680,
+      "scaled": 670
+    },
+    "57": {
+      "lower": 670,
+      "upper": 690,
+      "scaled": 680
+    },
+    "58": {
+      "lower": 680,
+      "upper": 700,
+      "scaled": 690
+    },
+    "59": {
+      "lower": 690,
+      "upper": 710,
+      "scaled": 700
+    },
+    "60": {
+      "lower": 700,
+      "upper": 720,
+      "scaled": 710
+    },
+    "61": {
+      "lower": 710,
+      "upper": 730,
+      "scaled": 720
+    },
+    "62": {
+      "lower": 720,
+      "upper": 740,
+      "scaled": 730
+    },
+    "63": {
+      "lower": 730,
+      "upper": 750,
+      "scaled": 740
+    },
+    "64": {
+      "lower": 750,
+      "upper": 770,
+      "scaled": 760
+    },
+    "65": {
+      "lower": 770,
+      "upper": 790,
+      "scaled": 780
+    },
+    "66": {
+      "lower": 790,
+      "upper": 800,
+      "scaled": 800
+    }
+  },
+  "Math": {
+    "0": {
+      "lower": 200,
+      "upper": 200,
+      "scaled": 200
+    },
+    "1": {
+      "lower": 200,
+      "upper": 200,
+      "scaled": 200
+    },
+    "2": {
+      "lower": 200,
+      "upper": 200,
+      "scaled": 200
+    },
+    "3": {
+      "lower": 200,
+      "upper": 200,
+      "scaled": 200
+    },
+    "4": {
+      "lower": 200,
+      "upper": 200,
+      "scaled": 200
+    },
+    "5": {
+      "lower": 200,
+      "upper": 200,
+      "scaled": 200
+    },
+    "6": {
+      "lower": 200,
+      "upper": 200,
+      "scaled": 200
+    },
+    "7": {
+      "lower": 200,
+      "upper": 220,
+      "scaled": 210
+    },
+    "8": {
+      "lower": 200,
+      "upper": 230,
+      "scaled": 220
+    },
+    "9": {
+      "lower": 220,
+      "upper": 250,
+      "scaled": 240
+    },
+    "10": {
+      "lower": 250,
+      "upper": 280,
+      "scaled": 260
+    },
+    "11": {
+      "lower": 280,
+      "upper": 310,
+      "scaled": 300
+    },
+    "12": {
+      "lower": 290,
+      "upper": 320,
+      "scaled": 300
+    },
+    "13": {
+      "lower": 300,
+      "upper": 330,
+      "scaled": 320
+    },
+    "14": {
+      "lower": 310,
+      "upper": 340,
+      "scaled": 320
+    },
+    "15": {
+      "lower": 320,
+      "upper": 350,
+      "scaled": 340
+    },
+    "16": {
+      "lower": 330,
+      "upper": 360,
+      "scaled": 340
+    },
+    "17": {
+      "lower": 330,
+      "upper": 360,
+      "scaled": 340
+    },
+    "18": {
+      "lower": 340,
+      "upper": 370,
+      "scaled": 360
+    },
+    "19": {
+      "lower": 350,
+      "upper": 380,
+      "scaled": 360
+    },
+    "20": {
+      "lower": 360,
+      "upper": 390,
+      "scaled": 380
+    },
+    "21": {
+      "lower": 370,
+      "upper": 400,
+      "scaled": 380
+    },
+    "22": {
+      "lower": 370,
+      "upper": 400,
+      "scaled": 380
+    },
+    "23": {
+      "lower": 380,
+      "upper": 410,
+      "scaled": 400
+    },
+    "24": {
+      "lower": 390,
+      "upper": 420,
+      "scaled": 400
+    },
+    "25": {
+      "lower": 400,
+      "upper": 430,
+      "scaled": 420
+    },
+    "26": {
+      "lower": 420,
+      "upper": 450,
+      "scaled": 440
+    },
+    "27": {
+      "lower": 430,
+      "upper": 460,
+      "scaled": 440
+    },
+    "28": {
+      "lower": 440,
+      "upper": 470,
+      "scaled": 460
+    },
+    "29": {
+      "lower": 460,
+      "upper": 490,
+      "scaled": 480
+    },
+    "30": {
+      "lower": 470,
+      "upper": 500,
+      "scaled": 480
+    },
+    "31": {
+      "lower": 480,
+      "upper": 510,
+      "scaled": 500
+    },
+    "32": {
+      "lower": 500,
+      "upper": 530,
+      "scaled": 520
+    },
+    "33": {
+      "lower": 510,
+      "upper": 540,
+      "scaled": 520
+    },
+    "34": {
+      "lower": 520,
+      "upper": 550,
+      "scaled": 540
+    },
+    "35": {
+      "lower": 530,
+      "upper": 560,
+      "scaled": 540
+    },
+    "36": {
+      "lower": 550,
+      "upper": 580,
+      "scaled": 560
+    },
+    "37": {
+      "lower": 560,
+      "upper": 590,
+      "scaled": 580
+    },
+    "38": {
+      "lower": 570,
+      "upper": 600,
+      "scaled": 580
+    },
+    "39": {
+      "lower": 580,
+      "upper": 610,
+      "scaled": 600
+    },
+    "40": {
+      "lower": 590,
+      "upper": 620,
+      "scaled": 600
+    },
+    "41": {
+      "lower": 600,
+      "upper": 630,
+      "scaled": 620
+    },
+    "42": {
+      "lower": 620,
+      "upper": 650,
+      "scaled": 640
+    },
+    "43": {
+      "lower": 630,
+      "upper": 660,
+      "scaled": 640
+    },
+    "44": {
+      "lower": 650,
+      "upper": 680,
+      "scaled": 660
+    },
+    "45": {
+      "lower": 670,
+      "upper": 700,
+      "scaled": 680
+    },
+    "46": {
+      "lower": 690,
+      "upper": 720,
+      "scaled": 700
+    },
+    "47": {
+      "lower": 710,
+      "upper": 740,
+      "scaled": 720
+    },
+    "48": {
+      "lower": 730,
+      "upper": 760,
+      "scaled": 740
+    },
+    "49": {
+      "lower": 740,
+      "upper": 770,
+      "scaled": 760
+    },
+    "50": {
+      "lower": 750,
+      "upper": 780,
+      "scaled": 760
+    },
+    "51": {
+      "lower": 760,
+      "upper": 790,
+      "scaled": 780
+    },
+    "52": {
+      "lower": 770,
+      "upper": 800,
+      "scaled": 780
+    },
+    "53": {
+      "lower": 780,
+      "upper": 800,
+      "scaled": 790
+    },
+    "54": {
+      "lower": 790,
+      "upper": 800,
+      "scaled": 800
+    }
+  }
+}
