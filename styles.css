@@ -2698,3 +2698,216 @@ body {
     display: none;
   }
 }
+
+/* ==========================================================================
+   4. GLOBAL MOTION & SMOOTH ANIMATION ENGINE (ALL MOVEMENTS ANIMATED)
+   ========================================================================== */
+
+@keyframes viewFadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardStaggerRise {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes questionPaneEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes optStaggerEnter {
+  0% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes badgeSpringPop {
+  0% {
+    transform: scale(0.8);
+  }
+  60% {
+    transform: scale(1.14);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes strikeLineDraw {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes popoverFloatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modalZoomIn {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeBackdropIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 1. View Switching Entrance */
+.view-container.active-view {
+  animation: viewFadeSlideIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 2. Dashboard & Review Staggered Card Entrances */
+.kpi-card,
+.mock-card,
+.admin-card,
+.rev-score-hero,
+.rev-matrix-section,
+.rev-explanation-workspace {
+  animation: cardStaggerRise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.kpi-card:nth-child(1) { animation-delay: 40ms; }
+.kpi-card:nth-child(2) { animation-delay: 90ms; }
+.kpi-card:nth-child(3) { animation-delay: 140ms; }
+.kpi-card:nth-child(4) { animation-delay: 190ms; }
+
+.mock-card:nth-child(1) { animation-delay: 50ms; }
+.mock-card:nth-child(2) { animation-delay: 95ms; }
+.mock-card:nth-child(3) { animation-delay: 140ms; }
+.mock-card:nth-child(4) { animation-delay: 185ms; }
+.mock-card:nth-child(5) { animation-delay: 230ms; }
+.mock-card:nth-child(6) { animation-delay: 275ms; }
+.mock-card:nth-child(7) { animation-delay: 320ms; }
+.mock-card:nth-child(8) { animation-delay: 365ms; }
+
+.rev-score-hero { animation-delay: 40ms; }
+.rev-matrix-section { animation-delay: 110ms; }
+.rev-explanation-workspace { animation-delay: 180ms; }
+
+/* 3. Question & Option Navigation Transitions */
+.q-animate-enter {
+  animation: questionPaneEnter 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.opt-stagger-enter {
+  animation: optStaggerEnter 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 4. Option Selection & Badge Pop Micro-Interactions */
+.bb-option-card.selected .bb-option-letter {
+  animation: badgeSpringPop 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.bb-q-nav-box.active {
+  animation: badgeSpringPop 0.26s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.bb-option-row.eliminated .bb-option-card::after {
+  transform-origin: left center;
+  animation: strikeLineDraw 0.24s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 5. Popovers, Modals, Floating Windows & Lightbox Animations */
+.bb-nav-popover:not(.hidden),
+.bb-directions-popover:not(.hidden),
+.bb-floating-window:not(.hidden) {
+  animation: popoverFloatIn 0.26s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.bb-modal-backdrop:not(.hidden),
+.bb-lightbox {
+  animation: fadeBackdropIn 0.22s ease-out both;
+}
+
+.bb-modal-backdrop:not(.hidden) .bb-modal-card,
+.bb-lightbox img {
+  animation: modalZoomIn 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 6. Universal Button & Interactive Element Spring Physics */
+button,
+.mock-card,
+.kpi-card,
+.bb-option-card,
+.bb-q-nav-box,
+.matrix-cell,
+.rev-opt-item,
+.section-score-card,
+.cib-stat,
+.bb-figure-img,
+.rev-exp-figure-img {
+  transition:
+    transform 0.26s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.26s cubic-bezier(0.25, 0.8, 0.25, 1),
+    border-color 0.22s ease,
+    background-color 0.22s ease,
+    color 0.2s ease,
+    opacity 0.22s ease;
+}
+
+button:active:not(:disabled),
+.bb-option-card:active {
+  transform: translateY(0) scale(0.97) !important;
+}
+
+.section-score-card:hover,
+.cib-stat:hover,
+.rev-opt-item:hover {
+  transform: translateY(-2px);
+  border-color: #d4cbb8;
+  box-shadow: 0 6px 18px rgba(165, 155, 135, 0.1);
+}
+
+.bb-figure-img:hover,
+.rev-exp-figure-img:hover {
+  transform: scale(1.015);
+}
+

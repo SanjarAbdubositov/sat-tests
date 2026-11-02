@@ -494,8 +494,9 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
     const savedSec = prog.modTimers && typeof prog.modTimers[moduleIdx] === "number" ? prog.modTimers[moduleIdx] : modDef.durationSec;
     startModuleTimer(savedSec > 0 ? savedSec : modDef.durationSec);
 
+    state.lastRenderedQuestionId = null;
     saveActiveProgress();
-    renderActiveQuestion();
+    renderActiveQuestion(false);
   }
 
   function startModuleTimer(initialSeconds) {
@@ -546,7 +547,14 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
     }
   }
 
-  function renderActiveQuestion() {
+  function triggerElementAnimation(el, animClass) {
+    if (!el) return;
+    el.classList.remove(animClass);
+    void el.offsetWidth;
+    el.classList.add(animClass);
+  }
+
+  function renderActiveQuestion(isOptionInteraction = false) {
     const modQuestions = getActiveModuleQuestions();
     if (modQuestions.length === 0) return;
 
@@ -556,8 +564,18 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
     const prog = ensureTestProgress(state.activeTestNum);
     prog.currentQuestionIdx = state.activeQuestionIdx;
 
+    const isNewQuestion = !isOptionInteraction && state.lastRenderedQuestionId !== qObj.id;
+    state.lastRenderedQuestionId = qObj.id;
+
     // 1. Render Left Column: Passage or Math Scenario with Line Highlighter
-    renderHighlightablePassage(qObj, prog);
+    if (!isOptionInteraction) {
+      renderHighlightablePassage(qObj, prog);
+    }
+
+    if (isNewQuestion) {
+      triggerElementAnimation(document.getElementById("bb-passage-container"), "q-animate-enter");
+      triggerElementAnimation(document.querySelector(".bb-question-card"), "q-animate-enter");
+    }
 
     // 2. Render Right Column Header & Prompt
     const unansweredInMod = modQuestions.filter((q) => typeof prog.answers[q.id] !== "number").length;
@@ -587,7 +605,10 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
       const optImgPath = figData && Array.isArray(figData.optFigures) ? figData.optFigures[idx] : null;
 
       const row = document.createElement("div");
-      row.className = `bb-option-row${isStruck ? " eliminated" : ""}`;
+      row.className = `bb-option-row${isStruck ? " eliminated" : ""}${isNewQuestion ? " opt-stagger-enter" : ""}`;
+      if (isNewQuestion) {
+        row.style.animationDelay = `${idx * 45}ms`;
+      }
 
       const card = document.createElement("div");
       card.className = `bb-option-card${isSelected ? " selected" : ""}`;
@@ -619,7 +640,7 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
         }
         prog.updatedAt = new Date().toISOString();
         saveActiveProgress();
-        renderActiveQuestion();
+        renderActiveQuestion(true);
       });
 
       row.appendChild(card);
@@ -741,7 +762,7 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
       }
     }
     saveActiveProgress();
-    renderActiveQuestion();
+    renderActiveQuestion(true);
   }
 
   function renderNavigatorBoxes(modQuestions, prog) {
@@ -1145,6 +1166,9 @@ var calculator = null; // Global Desmos GraphingCalculator instance per specific
     const outcomePill = document.getElementById("rev-detail-outcome-pill");
     outcomePill.className = `rev-outcome-pill ${outcome}`;
     outcomePill.textContent = outcomeLabel;
+
+    triggerElementAnimation(document.querySelector(".rev-split-left"), "q-animate-enter");
+    triggerElementAnimation(document.querySelector(".rev-split-right"), "q-animate-enter");
 
     const passageBox = document.getElementById("rev-detail-passage");
     passageBox.innerHTML = "";
